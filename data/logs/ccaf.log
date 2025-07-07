@@ -1,0 +1,539 @@
+2025-07-01 01:15:37 - root - INFO - Logging configured successfully
+2025-07-01 01:15:37 - root - INFO - CCAF Application initialized
+2025-07-01 01:15:37 - root - ERROR - CCAF requires administrator privileges
+2025-07-01 01:15:37 - root - INFO - Application cleanup completed
+2025-07-01 01:15:50 - root - INFO - Logging configured successfully
+2025-07-01 01:15:50 - root - INFO - CCAF Application initialized
+2025-07-01 01:15:50 - root - INFO - Initializing database...
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("users")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("users")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user_sessions")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("user_sessions")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("network_devices")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("network_devices")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_rules")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("firewall_rules")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_logs")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("firewall_logs")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("traffic_logs")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("traffic_logs")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("security_events")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("security_events")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("bandwidth_rules")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("bandwidth_rules")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("system_configurations")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - PRAGMA temp.table_info("system_configurations")
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	username VARCHAR(50) NOT NULL, 
+	email VARCHAR(100) NOT NULL, 
+	password_hash VARCHAR(255) NOT NULL, 
+	role VARCHAR(20), 
+	is_active BOOLEAN, 
+	last_login DATETIME, 
+	failed_login_attempts INTEGER, 
+	locked_until DATETIME, 
+	created_at DATETIME, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	UNIQUE (username), 
+	UNIQUE (email)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00062s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE network_devices (
+	id INTEGER NOT NULL, 
+	mac_address VARCHAR(17) NOT NULL, 
+	ip_address VARCHAR(45), 
+	hostname VARCHAR(255), 
+	vendor VARCHAR(100), 
+	device_type VARCHAR(50), 
+	os_type VARCHAR(50), 
+	is_trusted BOOLEAN, 
+	first_seen DATETIME, 
+	last_seen DATETIME, 
+	is_online BOOLEAN, 
+	PRIMARY KEY (id), 
+	UNIQUE (mac_address)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00079s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE user_sessions (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	session_token VARCHAR(255) NOT NULL, 
+	ip_address VARCHAR(45), 
+	user_agent TEXT, 
+	expires_at DATETIME NOT NULL, 
+	created_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id), 
+	UNIQUE (session_token)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00070s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE firewall_rules (
+	id INTEGER NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	target VARCHAR(255) NOT NULL, 
+	rule_type VARCHAR(20) NOT NULL, 
+	action VARCHAR(20), 
+	protocol VARCHAR(10), 
+	port_range VARCHAR(20), 
+	direction VARCHAR(10), 
+	priority INTEGER, 
+	status VARCHAR(20), 
+	reason TEXT, 
+	schedule_enabled BOOLEAN, 
+	schedule_start DATETIME, 
+	schedule_end DATETIME, 
+	schedule_days VARCHAR(20), 
+	applies_to_users TEXT, 
+	applies_to_devices TEXT, 
+	created_by INTEGER, 
+	created_at DATETIME, 
+	updated_at DATETIME, 
+	last_triggered DATETIME, 
+	trigger_count INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(created_by) REFERENCES users (id)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00076s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE traffic_logs (
+	id INTEGER NOT NULL, 
+	device_id INTEGER, 
+	source_ip VARCHAR(45), 
+	destination_ip VARCHAR(45), 
+	source_port INTEGER, 
+	destination_port INTEGER, 
+	protocol VARCHAR(10), 
+	bytes_sent INTEGER, 
+	bytes_received INTEGER, 
+	packets_sent INTEGER, 
+	packets_received INTEGER, 
+	connection_duration FLOAT, 
+	application VARCHAR(100), 
+	category VARCHAR(50), 
+	timestamp DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(device_id) REFERENCES network_devices (id)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00066s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_traffic_logs_timestamp ON traffic_logs (timestamp)
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00061s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE security_events (
+	id INTEGER NOT NULL, 
+	event_type VARCHAR(50) NOT NULL, 
+	severity VARCHAR(20), 
+	source_ip VARCHAR(45), 
+	target_ip VARCHAR(45), 
+	description TEXT, 
+	details TEXT, 
+	is_resolved BOOLEAN, 
+	auto_blocked BOOLEAN, 
+	timestamp DATETIME, 
+	resolved_at DATETIME, 
+	resolved_by INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(resolved_by) REFERENCES users (id)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00064s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_security_events_timestamp ON security_events (timestamp)
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00063s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE bandwidth_rules (
+	id INTEGER NOT NULL, 
+	device_id INTEGER, 
+	name VARCHAR(100) NOT NULL, 
+	upload_limit INTEGER, 
+	download_limit INTEGER, 
+	priority INTEGER, 
+	is_active BOOLEAN, 
+	quota_daily INTEGER, 
+	quota_monthly INTEGER, 
+	created_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(device_id) REFERENCES network_devices (id)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00057s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE system_configurations (
+	id INTEGER NOT NULL, 
+	"key" VARCHAR(100) NOT NULL, 
+	value TEXT, 
+	description TEXT, 
+	is_encrypted BOOLEAN, 
+	updated_at DATETIME, 
+	updated_by INTEGER, 
+	PRIMARY KEY (id), 
+	UNIQUE ("key"), 
+	FOREIGN KEY(updated_by) REFERENCES users (id)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00065s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - 
+CREATE TABLE firewall_logs (
+	id INTEGER NOT NULL, 
+	rule_id INTEGER, 
+	action VARCHAR(20) NOT NULL, 
+	source_ip VARCHAR(45), 
+	destination_ip VARCHAR(45), 
+	source_port INTEGER, 
+	destination_port INTEGER, 
+	protocol VARCHAR(10), 
+	packet_size INTEGER, 
+	target VARCHAR(255), 
+	reason VARCHAR(100), 
+	timestamp DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(rule_id) REFERENCES firewall_rules (id)
+)
+
+
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00079s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - CREATE INDEX ix_firewall_logs_timestamp ON firewall_logs (timestamp)
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [no key 0.00055s] ()
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:50 - root - INFO - Database initialized successfully
+2025-07-01 01:15:50 - root - INFO - Initializing firewall manager...
+2025-07-01 01:15:50 - root - INFO - Background firewall services started
+2025-07-01 01:15:50 - root - INFO - Initializing security manager...
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:50 - root - INFO - Registering API routes...
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [generated in 0.00124s] ('2025-06-30 19:45:50.725549', '2025-06-30 19:45:50.725549')
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:50 - root - INFO - Initializing web dashboard...
+2025-07-01 01:15:50 - root - INFO - All components initialized successfully
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.is_active AS users_is_active, users.last_login AS users_last_login, users.failed_login_attempts AS users_failed_login_attempts, users.locked_until AS users_locked_until, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - [generated in 0.00072s] ('admin', 1, 0)
+2025-07-01 01:15:50 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, email, password_hash, role, is_active, last_login, failed_login_attempts, locked_until, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [generated in 0.00072s] ('admin', 'admin@ccaf.local', '$2b$12$Ff6PIRKS4FKlGzxphKIMn.3LuP1lG/h1yuXM85eEWBxeXUIbh.0Ja', 'admin', 1, None, 0, None, '2025-06-30 19:45:51.030227', '2025-06-30 19:45:51.030227')
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.password_hash, users.role, users.is_active, users.last_login, users.failed_login_attempts, users.locked_until, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [generated in 0.00055s] (1,)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:51 - root - WARNING - Default admin user created with username: admin, password: admin123
+2025-07-01 01:15:51 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 01:15:51 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 01:15:51 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 01:15:51 - root - INFO - Logging configured successfully
+2025-07-01 01:15:51 - root - INFO - CCAF Application initialized
+2025-07-01 01:15:51 - root - INFO - Initializing database...
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("users")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user_sessions")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("network_devices")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_rules")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_logs")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("traffic_logs")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("security_events")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("bandwidth_rules")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("system_configurations")
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:51 - root - INFO - Database initialized successfully
+2025-07-01 01:15:51 - root - INFO - Initializing firewall manager...
+2025-07-01 01:15:51 - root - INFO - Background firewall services started
+2025-07-01 01:15:51 - root - INFO - Initializing security manager...
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:51 - root - INFO - Registering API routes...
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [generated in 0.00119s] ('2025-06-30 19:45:51.778112', '2025-06-30 19:45:51.778112')
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:51 - root - INFO - Initializing web dashboard...
+2025-07-01 01:15:51 - root - INFO - All components initialized successfully
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.is_active AS users_is_active, users.last_login AS users_last_login, users.failed_login_attempts AS users_failed_login_attempts, users.locked_until AS users_locked_until, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - [generated in 0.00063s] ('admin', 1, 0)
+2025-07-01 01:15:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:15:51 - werkzeug - WARNING -  * Debugger is active!
+2025-07-01 01:15:51 - werkzeug - INFO -  * Debugger PIN: 550-228-420
+2025-07-01 01:16:03 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 01:16:03] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-01 01:16:03 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 01:16:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-01 01:16:16 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 01:16:16] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-01 01:16:23 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 01:16:23] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-01 01:16:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:16:51 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:16:51 - sqlalchemy.engine.Engine - INFO - [cached since 60.38s ago] ('2025-06-30 19:46:51.116176', '2025-06-30 19:46:51.116176')
+2025-07-01 01:16:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:16:52 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:16:52 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:16:52 - sqlalchemy.engine.Engine - INFO - [cached since 60.41s ago] ('2025-06-30 19:46:52.207897', '2025-06-30 19:46:52.207897')
+2025-07-01 01:16:52 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:17:51 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:17:51 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:17:51 - sqlalchemy.engine.Engine - INFO - [cached since 120.9s ago] ('2025-06-30 19:47:51.686920', '2025-06-30 19:47:51.686920')
+2025-07-01 01:17:51 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:17:52 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:17:52 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:17:52 - sqlalchemy.engine.Engine - INFO - [cached since 121s ago] ('2025-06-30 19:47:52.795016', '2025-06-30 19:47:52.795016')
+2025-07-01 01:17:52 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:18:52 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:18:52 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:18:52 - sqlalchemy.engine.Engine - INFO - [cached since 181.5s ago] ('2025-06-30 19:48:52.201416', '2025-06-30 19:48:52.201416')
+2025-07-01 01:18:52 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:18:53 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:18:53 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:18:53 - sqlalchemy.engine.Engine - INFO - [cached since 181.5s ago] ('2025-06-30 19:48:53.339759', '2025-06-30 19:48:53.339759')
+2025-07-01 01:18:53 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:19 - werkzeug - INFO -  * Detected change in 'E:\\leesha\\ccaf\\ccaf\\ccaf_working.py', reloading
+2025-07-01 01:19:20 - root - INFO - Background firewall services stopped
+2025-07-01 01:19:20 - root - INFO - Application cleanup completed
+2025-07-01 01:19:20 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 01:19:21 - root - INFO - Logging configured successfully
+2025-07-01 01:19:21 - root - INFO - CCAF Application initialized
+2025-07-01 01:19:21 - root - INFO - Initializing database...
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("users")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user_sessions")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("network_devices")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_rules")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_logs")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("traffic_logs")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("security_events")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("bandwidth_rules")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("system_configurations")
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:21 - root - INFO - Database initialized successfully
+2025-07-01 01:19:21 - root - INFO - Initializing firewall manager...
+2025-07-01 01:19:21 - root - INFO - Background firewall services started
+2025-07-01 01:19:21 - root - INFO - Initializing security manager...
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:19:21 - root - INFO - Registering API routes...
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [generated in 0.00237s] ('2025-06-30 19:49:21.594933', '2025-06-30 19:49:21.594933')
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:21 - root - INFO - Initializing web dashboard...
+2025-07-01 01:19:21 - root - INFO - All components initialized successfully
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.is_active AS users_is_active, users.last_login AS users_last_login, users.failed_login_attempts AS users_failed_login_attempts, users.locked_until AS users_locked_until, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - [generated in 0.00202s] ('admin', 1, 0)
+2025-07-01 01:19:21 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:21 - werkzeug - WARNING -  * Debugger is active!
+2025-07-01 01:19:21 - werkzeug - INFO -  * Debugger PIN: 550-228-420
+2025-07-01 01:19:28 - werkzeug - INFO -  * Detected change in 'E:\\leesha\\ccaf\\ccaf\\ccaf_working.py', reloading
+2025-07-01 01:19:28 - werkzeug - INFO -  * Detected change in 'E:\\leesha\\ccaf\\ccaf\\ccaf_working.py', reloading
+2025-07-01 01:19:28 - werkzeug - INFO -  * Detected change in 'E:\\leesha\\ccaf\\ccaf\\ccaf_working.py', reloading
+2025-07-01 01:19:30 - root - INFO - Background firewall services stopped
+2025-07-01 01:19:30 - root - INFO - Application cleanup completed
+2025-07-01 01:19:30 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 01:19:31 - root - INFO - Logging configured successfully
+2025-07-01 01:19:31 - root - INFO - CCAF Application initialized
+2025-07-01 01:19:31 - root - INFO - Initializing database...
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("users")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user_sessions")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("network_devices")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_rules")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("firewall_logs")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("traffic_logs")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("security_events")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("bandwidth_rules")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("system_configurations")
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:31 - root - INFO - Database initialized successfully
+2025-07-01 01:19:31 - root - INFO - Initializing firewall manager...
+2025-07-01 01:19:31 - root - INFO - Background firewall services started
+2025-07-01 01:19:31 - root - INFO - Initializing security manager...
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:19:31 - root - INFO - Registering API routes...
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - SELECT firewall_rules.id AS firewall_rules_id, firewall_rules.name AS firewall_rules_name, firewall_rules.target AS firewall_rules_target, firewall_rules.rule_type AS firewall_rules_rule_type, firewall_rules.action AS firewall_rules_action, firewall_rules.protocol AS firewall_rules_protocol, firewall_rules.port_range AS firewall_rules_port_range, firewall_rules.direction AS firewall_rules_direction, firewall_rules.priority AS firewall_rules_priority, firewall_rules.status AS firewall_rules_status, firewall_rules.reason AS firewall_rules_reason, firewall_rules.schedule_enabled AS firewall_rules_schedule_enabled, firewall_rules.schedule_start AS firewall_rules_schedule_start, firewall_rules.schedule_end AS firewall_rules_schedule_end, firewall_rules.schedule_days AS firewall_rules_schedule_days, firewall_rules.applies_to_users AS firewall_rules_applies_to_users, firewall_rules.applies_to_devices AS firewall_rules_applies_to_devices, firewall_rules.created_by AS firewall_rules_created_by, firewall_rules.created_at AS firewall_rules_created_at, firewall_rules.updated_at AS firewall_rules_updated_at, firewall_rules.last_triggered AS firewall_rules_last_triggered, firewall_rules.trigger_count AS firewall_rules_trigger_count 
+FROM firewall_rules 
+WHERE firewall_rules.schedule_enabled = 1 AND firewall_rules.schedule_start <= ? AND firewall_rules.schedule_end >= ?
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [generated in 0.00198s] ('2025-06-30 19:49:31.432555', '2025-06-30 19:49:31.432555')
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:31 - root - INFO - Initializing web dashboard...
+2025-07-01 01:19:31 - root - INFO - All components initialized successfully
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.is_active AS users_is_active, users.last_login AS users_last_login, users.failed_login_attempts AS users_failed_login_attempts, users.locked_until AS users_locked_until, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - [generated in 0.00064s] ('admin', 1, 0)
+2025-07-01 01:19:31 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-07-01 01:19:31 - werkzeug - WARNING -  * Debugger is active!
+2025-07-01 01:19:31 - werkzeug - INFO -  * Debugger PIN: 550-228-420
+2025-07-01 01:19:42 - root - INFO - Received signal 2, shutting down...
+2025-07-01 01:19:43 - root - INFO - Background firewall services stopped
+2025-07-01 01:19:43 - root - INFO - Application cleanup completed
+2025-07-01 01:19:43 - root - INFO - Background firewall services stopped
+2025-07-01 01:19:43 - root - INFO - Application cleanup completed
+2025-07-01 01:19:43 - root - INFO - Received signal 2, shutting down...
+2025-07-01 01:19:44 - root - INFO - Background firewall services stopped
+2025-07-01 01:19:44 - root - INFO - Application cleanup completed
+2025-07-01 01:19:44 - root - INFO - Background firewall services stopped
+2025-07-01 01:19:44 - root - INFO - Application cleanup completed
+2025-07-01 09:27:46 - root - INFO - Logging configured successfully
+2025-07-01 09:27:46 - root - INFO - CCAF Application initialized
+2025-07-01 09:27:46 - root - ERROR - CCAF requires administrator privileges
+2025-07-01 09:27:46 - root - ERROR - Application failed to start: 'charmap' codec can't encode characters in position 0-1: character maps to <undefined>
+2025-07-01 09:27:46 - root - INFO - Application cleanup completed
+2025-07-01 09:28:06 - root - INFO - Logging configured successfully
+2025-07-01 09:28:06 - root - INFO - CCAF Application initialized
+2025-07-01 09:28:06 - root - INFO - Initializing database...
+2025-07-01 09:28:06 - root - INFO - Database initialized successfully
+2025-07-01 09:28:06 - root - INFO - Initializing firewall manager...
+2025-07-01 09:28:06 - root - INFO - Background firewall services started
+2025-07-01 09:28:06 - root - INFO - Initializing security manager...
+2025-07-01 09:28:06 - root - INFO - Registering API routes...
+2025-07-01 09:28:06 - root - INFO - Initializing web dashboard...
+2025-07-01 09:28:06 - root - INFO - All components initialized successfully
+2025-07-01 09:28:11 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.200.83:5000
+2025-07-01 09:28:11 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:28:13 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 09:28:13] "[33mGET /dashboard HTTP/1.1[0m" 404 -
+2025-07-01 09:28:13 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 09:28:13] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:28:19 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 09:28:19] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-01 09:28:19 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 09:28:19] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:28:27 - werkzeug - INFO - 127.0.0.1 - - [01/Jul/2025 09:28:27] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-01 09:28:36 - root - INFO - Received signal 2, shutting down...
+2025-07-01 09:28:37 - root - INFO - Background firewall services stopped
+2025-07-01 09:28:37 - root - INFO - Application cleanup completed
+2025-07-01 09:28:37 - root - INFO - Background firewall services stopped
+2025-07-01 09:28:37 - root - INFO - Application cleanup completed
+2025-07-07 15:22:45 - root - INFO - Logging configured successfully
+2025-07-07 15:22:45 - root - INFO - CCAF Application initialized
+2025-07-07 15:22:45 - root - INFO - Initializing database...
+2025-07-07 15:22:45 - root - INFO - Database initialized successfully
+2025-07-07 15:22:45 - root - INFO - Initializing firewall manager...
+2025-07-07 15:22:45 - root - INFO - Background firewall services started
+2025-07-07 15:22:45 - root - INFO - Initializing security manager...
+2025-07-07 15:22:45 - root - INFO - Registering API routes...
+2025-07-07 15:22:45 - root - INFO - Initializing web dashboard...
+2025-07-07 15:22:45 - root - INFO - All components initialized successfully
+2025-07-07 15:22:52 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.200.83:5000
+2025-07-07 15:22:52 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-07 15:22:52 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:22:52] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:22:56 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:22:56] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:23:01 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:23:01] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:23:17 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:23:17] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:23:31 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:23:31] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:23:47 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:23:47] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:23:57 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:23:57] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:24:01 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:24:01] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:24:17 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:24:17] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:24:31 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:24:31] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:24:47 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:24:47] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:24:58 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:24:58] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:25:11 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:25:11] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:25:17 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:25:17] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:25:47 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:25:47] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:25:59 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:25:59] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:26:11 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:26:11] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:26:17 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:26:17] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:26:47 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:26:47] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:27:00 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:27:00] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:27:11 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:27:11] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:27:17 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:27:17] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:27:47 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:27:47] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:28:01 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:28:01] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:28:11 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:28:11] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:28:17 - werkzeug - INFO - 127.0.0.1 - - [07/Jul/2025 15:28:17] "[33mGET /api/stats HTTP/1.1[0m" 404 -
+2025-07-07 15:28:37 - root - INFO - Received signal 2, shutting down...
+2025-07-07 15:28:37 - root - INFO - Background firewall services stopped
+2025-07-07 15:28:37 - root - INFO - Application cleanup completed
+2025-07-07 15:28:37 - root - INFO - Background firewall services stopped
+2025-07-07 15:28:37 - root - INFO - Application cleanup completed

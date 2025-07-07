@@ -1,0 +1,413 @@
+2025-07-01 01:19:58,028 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 01:19:58,028 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 01:19:58,039 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 01:19:58,390 - WARNING -  * Debugger is active!
+2025-07-01 01:19:58,395 - INFO -  * Debugger PIN: 550-228-420
+2025-07-01 01:20:01,022 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:01] "GET / HTTP/1.1" 200 -
+2025-07-01 01:20:14,975 - INFO - BLOCKED: www.facebook.com (domain)
+2025-07-01 01:20:14,975 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:14] "POST /api/block HTTP/1.1" 200 -
+2025-07-01 01:20:14,998 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:14] "GET / HTTP/1.1" 200 -
+2025-07-01 01:20:28,669 - INFO - UNBLOCKED: www.facebook.com (domain)
+2025-07-01 01:20:28,670 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:28] "POST /api/unblock HTTP/1.1" 200 -
+2025-07-01 01:20:28,685 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:28] "GET / HTTP/1.1" 200 -
+2025-07-01 01:20:32,805 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:32] "GET / HTTP/1.1" 200 -
+2025-07-01 01:20:37,448 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:37] "POST /api/logs/clear HTTP/1.1" 200 -
+2025-07-01 01:20:37,469 - INFO - 127.0.0.1 - - [01/Jul/2025 01:20:37] "GET / HTTP/1.1" 200 -
+2025-07-01 01:21:08,273 - INFO - 127.0.0.1 - - [01/Jul/2025 01:21:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:21:26,480 - INFO - 127.0.0.1 - - [01/Jul/2025 01:21:26] "GET /api/health HTTP/1.1" 200 -
+2025-07-01 01:21:34,963 - INFO - 127.0.0.1 - - [01/Jul/2025 01:21:34] "GET /api/export HTTP/1.1" 200 -
+2025-07-01 01:21:37,488 - INFO - 127.0.0.1 - - [01/Jul/2025 01:21:37] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:22:08,276 - INFO - 127.0.0.1 - - [01/Jul/2025 01:22:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:22:38,281 - INFO - 127.0.0.1 - - [01/Jul/2025 01:22:38] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:23:08,280 - INFO - 127.0.0.1 - - [01/Jul/2025 01:23:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:23:38,288 - INFO - 127.0.0.1 - - [01/Jul/2025 01:23:38] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:24:08,272 - INFO - 127.0.0.1 - - [01/Jul/2025 01:24:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:25:01,367 - INFO - 127.0.0.1 - - [01/Jul/2025 01:25:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:25:08,277 - INFO - 127.0.0.1 - - [01/Jul/2025 01:25:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 01:25:38,274 - INFO - 127.0.0.1 - - [01/Jul/2025 01:25:38] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:13:23,024 - INFO - User created: admin (admin@ccaf.local) with role admin
+2025-07-01 09:13:24,821 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:13:24,823 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:13:24,994 - INFO -  * Restarting with stat
+2025-07-01 09:13:28,051 - WARNING -  * Debugger is active!
+2025-07-01 09:13:28,144 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:13:44,215 - INFO - 127.0.0.1 - - [01/Jul/2025 09:13:44] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-01 09:13:45,779 - INFO - 127.0.0.1 - - [01/Jul/2025 09:13:45] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:13:46,875 - INFO - 127.0.0.1 - - [01/Jul/2025 09:13:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-01 09:13:55,126 - INFO - 127.0.0.1 - - [01/Jul/2025 09:13:55] "GET /register HTTP/1.1" 200 -
+2025-07-01 09:15:48,696 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:15:48,698 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:15:48,718 - INFO -  * Restarting with stat
+2025-07-01 09:15:51,151 - WARNING -  * Debugger is active!
+2025-07-01 09:15:51,195 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:16:10,752 - INFO - 127.0.0.1 - - [01/Jul/2025 09:16:10] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:16:19,692 - INFO - User authenticated: admin
+2025-07-01 09:16:19,699 - INFO - 127.0.0.1 - - [01/Jul/2025 09:16:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:16:19,732 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:16:19,737 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:16:19,813 - INFO - 127.0.0.1 - - [01/Jul/2025 09:16:19] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:16:34,487 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:16:34,492 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:16:34,548 - INFO - 127.0.0.1 - - [01/Jul/2025 09:16:34] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:16:47,821 - INFO - 127.0.0.1 - - [01/Jul/2025 09:16:47] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:17:13,536 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:17:13,537 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:17:13,555 - INFO -  * Restarting with stat
+2025-07-01 09:17:16,332 - WARNING -  * Debugger is active!
+2025-07-01 09:17:16,372 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:17:17,824 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:17] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-07-01 09:17:17,895 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:17] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:17:23,564 - INFO - User authenticated: admin
+2025-07-01 09:17:23,571 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:17:23,600 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:17:23,605 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:17:23,669 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:23] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:17:33,855 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:33] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:17:41,359 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:41] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:17:51,865 - INFO - 127.0.0.1 - - [01/Jul/2025 09:17:51] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:18:59,426 - INFO - 127.0.0.1 - - [01/Jul/2025 09:18:59] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:20:47,084 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:20:47,086 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:20:47,109 - INFO -  * Restarting with stat
+2025-07-01 09:20:49,481 - WARNING -  * Debugger is active!
+2025-07-01 09:20:49,527 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:20:53,594 - INFO - 127.0.0.1 - - [01/Jul/2025 09:20:53] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-07-01 09:20:53,660 - INFO - 127.0.0.1 - - [01/Jul/2025 09:20:53] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:20:53,816 - INFO - 127.0.0.1 - - [01/Jul/2025 09:20:53] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:20:58,125 - INFO - User authenticated: admin
+2025-07-01 09:20:58,131 - INFO - 127.0.0.1 - - [01/Jul/2025 09:20:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:20:58,156 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:20:58,162 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:20:58,204 - INFO - 127.0.0.1 - - [01/Jul/2025 09:20:58] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:20:58,343 - INFO - 127.0.0.1 - - [01/Jul/2025 09:20:58] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:21:09,029 - INFO - 127.0.0.1 - - [01/Jul/2025 09:21:09] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:23:53,512 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Downloads\\ccaf\\ccaf\\api\\routes\\firewall.py', reloading
+2025-07-01 09:23:53,758 - INFO -  * Restarting with stat
+2025-07-01 09:23:56,885 - WARNING -  * Debugger is active!
+2025-07-01 09:23:56,924 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:24:04,726 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:04] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-07-01 09:24:04,785 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:04] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:24:04,923 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:04] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:24:09,011 - INFO - User authenticated: admin
+2025-07-01 09:24:09,020 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:24:09,056 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:24:09,063 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:24:09,118 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:09] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:24:09,289 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:09] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:24:18,902 - INFO - 127.0.0.1 - - [01/Jul/2025 09:24:18] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:25:05,976 - INFO - 127.0.0.1 - - [01/Jul/2025 09:25:05] "[33mGET /api/firewall/block HTTP/1.1[0m" 404 -
+2025-07-01 09:25:06,136 - INFO - 127.0.0.1 - - [01/Jul/2025 09:25:06] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:25:52,195 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Downloads\\ccaf\\ccaf\\app.py', reloading
+2025-07-01 09:25:53,011 - INFO -  * Restarting with stat
+2025-07-01 09:25:55,481 - WARNING -  * Debugger is active!
+2025-07-01 09:25:55,510 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:26:30,064 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:26:30,067 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:26:30,082 - INFO -  * Restarting with stat
+2025-07-01 09:26:32,619 - WARNING -  * Debugger is active!
+2025-07-01 09:26:32,674 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:26:34,882 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:34] "[33mGET /api/firewall/block HTTP/1.1[0m" 404 -
+2025-07-01 09:26:35,048 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:35] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:26:42,114 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:42] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-01 09:26:42,184 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:42] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:26:42,324 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:42] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:26:46,737 - INFO - User authenticated: admin
+2025-07-01 09:26:46,746 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:26:46,784 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:26:46,791 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:26:46,856 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:46] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:26:47,026 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:47] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-01 09:26:55,987 - INFO - 127.0.0.1 - - [01/Jul/2025 09:26:55] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:28:53,158 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:28:53,160 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:28:53,177 - INFO -  * Restarting with stat
+2025-07-01 09:28:55,968 - WARNING -  * Debugger is active!
+2025-07-01 09:28:56,010 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:28:56,651 - INFO - 127.0.0.1 - - [01/Jul/2025 09:28:56] "GET / HTTP/1.1" 200 -
+2025-07-01 09:29:05,926 - INFO - BLOCKED: www.facebook.com (domain)
+2025-07-01 09:29:05,930 - INFO - 127.0.0.1 - - [01/Jul/2025 09:29:05] "POST /api/block HTTP/1.1" 200 -
+2025-07-01 09:29:06,103 - INFO - 127.0.0.1 - - [01/Jul/2025 09:29:06] "GET / HTTP/1.1" 200 -
+2025-07-01 09:29:37,105 - INFO - 127.0.0.1 - - [01/Jul/2025 09:29:37] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:30:06,236 - INFO - 127.0.0.1 - - [01/Jul/2025 09:30:06] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:30:37,100 - INFO - 127.0.0.1 - - [01/Jul/2025 09:30:37] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:31:07,106 - INFO - 127.0.0.1 - - [01/Jul/2025 09:31:07] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:31:37,102 - INFO - 127.0.0.1 - - [01/Jul/2025 09:31:37] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:32:07,110 - INFO - 127.0.0.1 - - [01/Jul/2025 09:32:07] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:32:36,849 - INFO - 127.0.0.1 - - [01/Jul/2025 09:32:36] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:33:06,220 - INFO - 127.0.0.1 - - [01/Jul/2025 09:33:06] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:33:37,095 - INFO - 127.0.0.1 - - [01/Jul/2025 09:33:37] "GET /api/stats HTTP/1.1" 200 -
+2025-07-01 09:33:57,396 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:33:57,403 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:33:57,425 - INFO -  * Restarting with stat
+2025-07-01 09:34:01,102 - WARNING -  * Debugger is active!
+2025-07-01 09:34:01,154 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:34:07,096 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:07] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:34:07,160 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:07] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:34:27,596 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:27] "[32mPOST /api/block HTTP/1.1[0m" 302 -
+2025-07-01 09:34:27,670 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:27] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:34:36,221 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:36] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:34:36,273 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:36] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:34:40,249 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:40] "[32mPOST /api/block HTTP/1.1[0m" 302 -
+2025-07-01 09:34:40,414 - INFO - 127.0.0.1 - - [01/Jul/2025 09:34:40] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:35:07,093 - INFO - 127.0.0.1 - - [01/Jul/2025 09:35:07] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:35:07,137 - INFO - 127.0.0.1 - - [01/Jul/2025 09:35:07] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:35:37,085 - INFO - 127.0.0.1 - - [01/Jul/2025 09:35:37] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:35:37,127 - INFO - 127.0.0.1 - - [01/Jul/2025 09:35:37] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:35:43,206 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Downloads\\ccaf\\ccaf\\ccaf_auth.py', reloading
+2025-07-01 09:35:43,462 - INFO -  * Restarting with stat
+2025-07-01 09:35:46,972 - WARNING -  * Debugger is active!
+2025-07-01 09:35:47,033 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:36:06,234 - INFO - 127.0.0.1 - - [01/Jul/2025 09:36:06] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:36:06,302 - INFO - 127.0.0.1 - - [01/Jul/2025 09:36:06] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:36:07,007 - INFO - 127.0.0.1 - - [01/Jul/2025 09:36:07] "[32mPOST /api/block HTTP/1.1[0m" 302 -
+2025-07-01 09:36:07,087 - INFO - 127.0.0.1 - - [01/Jul/2025 09:36:07] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:36:38,609 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 09:36:38,611 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 09:36:38,626 - INFO -  * Restarting with stat
+2025-07-01 09:36:41,098 - WARNING -  * Debugger is active!
+2025-07-01 09:36:41,148 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:36:41,710 - INFO - 127.0.0.1 - - [01/Jul/2025 09:36:41] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:36:41,785 - INFO - 127.0.0.1 - - [01/Jul/2025 09:36:41] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:37:07,096 - INFO - 127.0.0.1 - - [01/Jul/2025 09:37:07] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:37:07,134 - INFO - 127.0.0.1 - - [01/Jul/2025 09:37:07] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:37:36,967 - INFO - 127.0.0.1 - - [01/Jul/2025 09:37:36] "GET /api/health HTTP/1.1" 200 -
+2025-07-01 09:37:52,449 - INFO - 127.0.0.1 - - [01/Jul/2025 09:37:52] "[32mPOST /api/block HTTP/1.1[0m" 302 -
+2025-07-01 09:37:52,489 - INFO - 127.0.0.1 - - [01/Jul/2025 09:37:52] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:38:08,218 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:08] "[32mGET /api/stats HTTP/1.1[0m" 302 -
+2025-07-01 09:38:08,300 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:08] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:38:13,275 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Downloads\\ccaf\\ccaf\\ccaf_auth.py', reloading
+2025-07-01 09:38:13,502 - INFO -  * Restarting with stat
+2025-07-01 09:38:17,036 - WARNING -  * Debugger is active!
+2025-07-01 09:38:17,069 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:38:28,439 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Downloads\\ccaf\\ccaf\\ccaf_auth.py', reloading
+2025-07-01 09:38:28,706 - INFO -  * Restarting with stat
+2025-07-01 09:38:32,570 - WARNING -  * Debugger is active!
+2025-07-01 09:38:32,625 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:38:33,307 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:33] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-01 09:38:33,376 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:33] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:38:38,553 - INFO - User authenticated: admin
+2025-07-01 09:38:38,559 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:38] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:38:38,584 - ERROR - Error getting rules: no such column: created_by
+2025-07-01 09:38:38,588 - ERROR - Error getting logs: no such column: user_id
+2025-07-01 09:38:38,659 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:38] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:38:59,849 - ERROR - Exception in block endpoint: Error processing block request: table rules has no column named created_by
+Traceback (most recent call last):
+  File "C:\Users\Harsh\Downloads\ccaf\ccaf\ccaf_auth.py", line 1559, in block
+    save_rule(target, rule_type, reason)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Harsh\Downloads\ccaf\ccaf\ccaf_auth.py", line 1288, in save_rule
+    c.execute("INSERT INTO rules (target, type, reason, created_by) VALUES (?, ?, ?, ?)",
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              (target, rule_type, reason, user_id))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: table rules has no column named created_by
+2025-07-01 09:38:59,868 - INFO - 127.0.0.1 - - [01/Jul/2025 09:38:59] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:39:12,219 - ERROR - Exception in block endpoint: Error processing block request: table rules has no column named created_by
+Traceback (most recent call last):
+  File "C:\Users\Harsh\Downloads\ccaf\ccaf\ccaf_auth.py", line 1559, in block
+    save_rule(target, rule_type, reason)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Harsh\Downloads\ccaf\ccaf\ccaf_auth.py", line 1288, in save_rule
+    c.execute("INSERT INTO rules (target, type, reason, created_by) VALUES (?, ?, ?, ?)",
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              (target, rule_type, reason, user_id))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: table rules has no column named created_by
+2025-07-01 09:39:12,228 - INFO - 127.0.0.1 - - [01/Jul/2025 09:39:12] "[35m[1mPOST /api/block HTTP/1.1[0m" 500 -
+2025-07-01 09:41:01,431 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Downloads\\ccaf\\ccaf\\ccaf_auth.py', reloading
+2025-07-01 09:41:01,768 - INFO -  * Restarting with stat
+2025-07-01 09:41:05,803 - WARNING -  * Debugger is active!
+2025-07-01 09:41:05,847 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 09:41:27,177 - INFO - 127.0.0.1 - - [01/Jul/2025 09:41:27] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-07-01 09:41:27,247 - INFO - 127.0.0.1 - - [01/Jul/2025 09:41:27] "GET /login HTTP/1.1" 200 -
+2025-07-01 09:41:32,851 - INFO - User authenticated: admin
+2025-07-01 09:41:32,857 - INFO - 127.0.0.1 - - [01/Jul/2025 09:41:32] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 09:41:32,947 - INFO - 127.0.0.1 - - [01/Jul/2025 09:41:32] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 09:41:49,492 - INFO - BLOCKED: www.instagram.com (domain) by user 1
+2025-07-01 09:41:49,497 - INFO - 127.0.0.1 - - [01/Jul/2025 09:41:49] "POST /api/block HTTP/1.1" 200 -
+2025-07-01 09:41:49,681 - INFO - 127.0.0.1 - - [01/Jul/2025 09:41:49] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 15:08:12,397 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 15:08:12,406 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-01 15:08:12,534 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 15:08:16,565 - WARNING -  * Debugger is active!
+2025-07-01 15:08:16,602 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 15:08:23,331 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pluggy\\_tracing.py', reloading
+2025-07-01 15:08:23,365 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pluggy\\_callers.py', reloading
+2025-07-01 15:08:23,504 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:23] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-01 15:08:23,521 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\config\\compat.py', reloading
+2025-07-01 15:08:23,553 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\compat.py', reloading
+2025-07-01 15:08:23,607 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\py.py', reloading
+2025-07-01 15:08:23,754 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\_py\\error.py', reloading
+2025-07-01 15:08:23,766 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\_py\\path.py', reloading
+2025-07-01 15:08:23,893 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\deprecated.py', reloading
+2025-07-01 15:08:24,053 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\config\\findpaths.py', reloading
+2025-07-01 15:08:24,228 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:24] "GET /login HTTP/1.1" 200 -
+2025-07-01 15:08:25,017 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 15:08:28,953 - WARNING -  * Debugger is active!
+2025-07-01 15:08:28,994 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 15:08:29,175 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-01 15:08:29,227 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\ccaf\\ccaf\\app.py', reloading
+2025-07-01 15:08:29,848 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\unittest.py', reloading
+2025-07-01 15:08:29,917 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\skipping.py', reloading
+2025-07-01 15:08:30,050 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\pastebin.py', reloading
+2025-07-01 15:08:30,096 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\_pytest\\junitxml.py', reloading
+2025-07-01 15:08:30,411 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 15:08:35,071 - WARNING -  * Debugger is active!
+2025-07-01 15:08:35,143 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 15:08:35,341 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\coverage\\jsonreport.py', reloading
+2025-07-01 15:08:35,396 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\coverage\\lcovreport.py', reloading
+2025-07-01 15:08:35,436 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\coverage\\multiproc.py', reloading
+2025-07-01 15:08:35,547 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\coverage\\plugin_support.py', reloading
+2025-07-01 15:08:35,688 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\coverage\\report.py', reloading
+2025-07-01 15:08:35,722 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\coverage\\xmlreport.py', reloading
+2025-07-01 15:08:35,978 - INFO - User authenticated: admin
+2025-07-01 15:08:35,985 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 15:08:36,090 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:36] "GET /dashboard HTTP/1.1" 200 -
+2025-07-01 15:08:37,107 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 15:08:40,925 - WARNING -  * Debugger is active!
+2025-07-01 15:08:40,977 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 15:08:41,214 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\jsonschema\\__init__.py', reloading
+2025-07-01 15:08:41,357 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\netaddr\\__init__.py', reloading
+2025-07-01 15:08:41,380 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\ordered_set\\__init__.py', reloading
+2025-07-01 15:08:41,433 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pkg_resources\\__init__.py', reloading
+2025-07-01 15:08:41,470 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\publicsuffix2\\__init__.py', reloading
+2025-07-01 15:08:41,536 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pyflakes\\__init__.py', reloading
+2025-07-01 15:08:41,681 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\rpds\\__init__.py', reloading
+2025-07-01 15:08:41,756 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sphinx\\__init__.py', reloading
+2025-07-01 15:08:41,803 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sphinx_rtd_theme\\__init__.py', reloading
+2025-07-01 15:08:41,809 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\__init__.py', reloading
+2025-07-01 15:08:41,823 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\stack_data\\__init__.py', reloading
+2025-07-01 15:08:41,854 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\striprtf\\__init__.py', reloading
+2025-07-01 15:08:41,885 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\termcolor\\__init__.py', reloading
+2025-07-01 15:08:41,915 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\tldextract\\__init__.py', reloading
+2025-07-01 15:08:41,951 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\traitlets\\__init__.py', reloading
+2025-07-01 15:08:41,961 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\tzdata\\__init__.py', reloading
+2025-07-01 15:08:41,981 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urwid\\__init__.py', reloading
+2025-07-01 15:08:42,040 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\wcwidth\\__init__.py', reloading
+2025-07-01 15:08:42,079 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\win32ctypes\\__init__.py', reloading
+2025-07-01 15:08:42,086 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\wsproto\\__init__.py', reloading
+2025-07-01 15:08:42,641 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 15:08:45,390 - WARNING -  * Debugger is active!
+2025-07-01 15:08:45,469 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 15:08:45,793 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\prometheus_client\\twisted\\__init__.py', reloading
+2025-07-01 15:08:45,965 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pyarrow\\interchange\\__init__.py', reloading
+2025-07-01 15:08:45,969 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pyarrow\\parquet\\__init__.py', reloading
+2025-07-01 15:08:46,262 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pydeck\\bindings\\__init__.py', reloading
+2025-07-01 15:08:46,266 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pydeck\\data_utils\\__init__.py', reloading
+2025-07-01 15:08:46,271 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pydeck\\exceptions\\__init__.py', reloading
+2025-07-01 15:08:46,279 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pydeck\\nbextension\\__init__.py', reloading
+2025-07-01 15:08:46,284 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pydeck\\types\\__init__.py', reloading
+2025-07-01 15:08:46,289 - INFO -  * Detected change in 'C:\\Users\\Harsh\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pydeck\\widget\\__init__.py', reloading
+2025-07-01 15:08:46,961 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-01 15:08:50,031 - WARNING -  * Debugger is active!
+2025-07-01 15:08:50,101 - INFO -  * Debugger PIN: 286-123-943
+2025-07-01 15:08:50,318 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:50] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-01 15:08:50,406 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:50] "GET /login HTTP/1.1" 200 -
+2025-07-01 15:08:56,012 - INFO - 127.0.0.1 - - [01/Jul/2025 15:08:56] "GET /register HTTP/1.1" 200 -
+2025-07-01 15:09:49,222 - INFO - 127.0.0.1 - - [01/Jul/2025 15:09:49] "GET /login HTTP/1.1" 200 -
+2025-07-01 15:10:01,727 - INFO - User authenticated: admin
+2025-07-01 15:10:01,734 - INFO - 127.0.0.1 - - [01/Jul/2025 15:10:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-01 15:10:01,867 - INFO - 127.0.0.1 - - [01/Jul/2025 15:10:01] "GET /dashboard HTTP/1.1" 200 -
+2025-07-07 15:20:48,250 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-07 15:20:48,261 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-07 15:20:48,399 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-07 15:20:51,548 - WARNING -  * Debugger is active!
+2025-07-07 15:20:51,623 - INFO -  * Debugger PIN: 286-123-943
+2025-07-07 15:20:51,795 - INFO - 127.0.0.1 - - [07/Jul/2025 15:20:51] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:20:54,430 - INFO - 127.0.0.1 - - [07/Jul/2025 15:20:54] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:21:00,408 - INFO - 127.0.0.1 - - [07/Jul/2025 15:21:00] "GET / HTTP/1.1" 200 -
+2025-07-07 15:21:01,579 - INFO - 127.0.0.1 - - [07/Jul/2025 15:21:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-07 15:21:16,450 - INFO - 127.0.0.1 - - [07/Jul/2025 15:21:16] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:21:31,744 - INFO - 127.0.0.1 - - [07/Jul/2025 15:21:31] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:21:47,682 - INFO - 127.0.0.1 - - [07/Jul/2025 15:21:47] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:21:55,442 - INFO - 127.0.0.1 - - [07/Jul/2025 15:21:55] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:22:01,434 - INFO - 127.0.0.1 - - [07/Jul/2025 15:22:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:30:43,175 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-07 15:30:43,178 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-07 15:30:43,271 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-07 15:30:46,416 - WARNING -  * Debugger is active!
+2025-07-07 15:30:46,466 - INFO -  * Debugger PIN: 286-123-943
+2025-07-07 15:30:46,887 - INFO - 127.0.0.1 - - [07/Jul/2025 15:30:46] "GET / HTTP/1.1" 200 -
+2025-07-07 15:30:47,852 - INFO - 127.0.0.1 - - [07/Jul/2025 15:30:47] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:30:56,794 - INFO - BLOCKED: olx.com (domain)
+2025-07-07 15:30:56,797 - INFO - 127.0.0.1 - - [07/Jul/2025 15:30:56] "POST /api/block HTTP/1.1" 200 -
+2025-07-07 15:30:57,255 - INFO - 127.0.0.1 - - [07/Jul/2025 15:30:57] "GET / HTTP/1.1" 200 -
+2025-07-07 15:31:04,558 - INFO - 127.0.0.1 - - [07/Jul/2025 15:31:04] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:31:17,876 - INFO - 127.0.0.1 - - [07/Jul/2025 15:31:17] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:31:27,423 - INFO - 127.0.0.1 - - [07/Jul/2025 15:31:27] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:31:47,864 - INFO - 127.0.0.1 - - [07/Jul/2025 15:31:47] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:31:57,749 - INFO - 127.0.0.1 - - [07/Jul/2025 15:31:57] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:32:05,461 - INFO - 127.0.0.1 - - [07/Jul/2025 15:32:05] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:32:15,558 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:32:15,562 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:32:16,106 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-07 15:32:18,945 - WARNING -  * Debugger is active!
+2025-07-07 15:32:18,976 - INFO -  * Debugger PIN: 286-123-943
+2025-07-07 15:32:19,596 - INFO - 127.0.0.1 - - [07/Jul/2025 15:32:19] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:32:27,765 - INFO - 127.0.0.1 - - [07/Jul/2025 15:32:27] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:32:49,765 - INFO - 127.0.0.1 - - [07/Jul/2025 15:32:49] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:32:55,884 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:32:56,003 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:32:56,827 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-07 15:33:00,895 - WARNING -  * Debugger is active!
+2025-07-07 15:33:00,965 - INFO -  * Debugger PIN: 286-123-943
+2025-07-07 15:33:01,216 - INFO - 127.0.0.1 - - [07/Jul/2025 15:33:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:33:06,444 - INFO - 127.0.0.1 - - [07/Jul/2025 15:33:06] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:33:19,776 - INFO - 127.0.0.1 - - [07/Jul/2025 15:33:19] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:33:27,435 - INFO - 127.0.0.1 - - [07/Jul/2025 15:33:27] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:33:37,109 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:33:37,112 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:33:37,121 - INFO -  * Detected change in 'C:\\Users\\Harsh\\Desktop\\New folder\\ccaf\\ccaf_working.py', reloading
+2025-07-07 15:33:37,921 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-07 15:33:41,626 - WARNING -  * Debugger is active!
+2025-07-07 15:33:41,690 - INFO -  * Debugger PIN: 286-123-943
+2025-07-07 15:33:49,741 - INFO - 127.0.0.1 - - [07/Jul/2025 15:33:49] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:33:57,758 - INFO - 127.0.0.1 - - [07/Jul/2025 15:33:57] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:34:07,446 - INFO - 127.0.0.1 - - [07/Jul/2025 15:34:07] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:34:19,777 - INFO - 127.0.0.1 - - [07/Jul/2025 15:34:19] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:34:26,251 - INFO - 127.0.0.1 - - [07/Jul/2025 15:34:26] "GET / HTTP/1.1" 200 -
+2025-07-07 15:34:27,444 - INFO - 127.0.0.1 - - [07/Jul/2025 15:34:27] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:34:56,724 - INFO - 127.0.0.1 - - [07/Jul/2025 15:34:56] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:35:01,712 - INFO - BLOCKED: mujslcm.com (domain)
+2025-07-07 15:35:01,717 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:01] "POST /api/block HTTP/1.1" 200 -
+2025-07-07 15:35:01,906 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:01] "GET / HTTP/1.1" 200 -
+2025-07-07 15:35:08,919 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:35:12,131 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:12] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:35:34,499 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:34] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:35:43,041 - INFO - UNBLOCKED: mujslcm.com (domain)
+2025-07-07 15:35:43,047 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:43] "POST /api/unblock HTTP/1.1" 200 -
+2025-07-07 15:35:43,232 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:43] "GET / HTTP/1.1" 200 -
+2025-07-07 15:35:58,908 - INFO - BLOCKED: whatsapp.com (domain)
+2025-07-07 15:35:58,912 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:58] "POST /api/block HTTP/1.1" 200 -
+2025-07-07 15:35:59,102 - INFO - 127.0.0.1 - - [07/Jul/2025 15:35:59] "GET / HTTP/1.1" 200 -
+2025-07-07 15:36:09,477 - INFO - 127.0.0.1 - - [07/Jul/2025 15:36:09] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:36:12,177 - INFO - 127.0.0.1 - - [07/Jul/2025 15:36:12] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:36:29,826 - INFO - 127.0.0.1 - - [07/Jul/2025 15:36:29] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:36:41,932 - INFO - UNBLOCKED: whatsapp.com (domain)
+2025-07-07 15:36:41,936 - INFO - 127.0.0.1 - - [07/Jul/2025 15:36:41] "POST /api/unblock HTTP/1.1" 200 -
+2025-07-07 15:36:42,112 - INFO - 127.0.0.1 - - [07/Jul/2025 15:36:42] "GET / HTTP/1.1" 200 -
+2025-07-07 15:37:10,475 - INFO - 127.0.0.1 - - [07/Jul/2025 15:37:10] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:37:11,801 - INFO - 127.0.0.1 - - [07/Jul/2025 15:37:11] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:38:13,121 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-07 15:38:13,124 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-07 15:38:13,235 - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-07 15:38:16,644 - WARNING -  * Debugger is active!
+2025-07-07 15:38:16,676 - INFO -  * Debugger PIN: 286-123-943
+2025-07-07 15:38:16,768 - INFO - 127.0.0.1 - - [07/Jul/2025 15:38:16] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:38:22,711 - INFO - 127.0.0.1 - - [07/Jul/2025 15:38:22] "GET /api/stats HTTP/1.1" 200 -
+2025-07-07 15:38:29,245 - INFO - 127.0.0.1 - - [07/Jul/2025 15:38:29] "GET / HTTP/1.1" 200 -
+2025-07-07 15:38:55,322 - INFO - 127.0.0.1 - - [07/Jul/2025 15:38:55] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-07-07 15:39:00,874 - INFO - 127.0.0.1 - - [07/Jul/2025 15:39:00] "[33mGET /register HTTP/1.1[0m" 404 -
