@@ -73,8 +73,8 @@
             </nav>
 
             <div class="system-status">
-                <p><strong>Platform:</strong> <span>{{ system_info.platform }}</span></p>
-                <p><strong>Server:</strong> <span>{{ system_info.server }}</span></p>
+                <p><strong>Platform:</strong> <span>{{ system_info.platform if system_info else 'CCAF Platform' }}</span></p>
+                <p><strong>Server:</strong> <span>{{ system_info.server if system_info else 'Local Edge' }}</span></p>
                 <p><strong>Engine:</strong> <span>Monitoring</span></p>
             </div>
         </aside>

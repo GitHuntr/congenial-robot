@@ -5321,3 +5321,30 @@ sqlite3.OperationalError: table rules has no column named created_by
 2026-04-08 21:21:35,354 - INFO - 127.0.0.1 - - [08/Apr/2026 21:21:35] "GET /rules HTTP/1.1" 200 -
 2026-04-08 21:21:35,369 - INFO - 127.0.0.1 - - [08/Apr/2026 21:21:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2026-04-08 21:21:35,395 - INFO - 127.0.0.1 - - [08/Apr/2026 21:21:35] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-04-08 21:27:32,305 - INFO - CCAF Server starting on 127.0.0.1:5000
+2026-04-08 21:27:32,313 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-08 21:27:32,313 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-08 21:27:32,314 - INFO -  * Restarting with stat
+2026-04-08 21:27:32,434 - INFO - CCAF Server starting on 127.0.0.1:5000
+2026-04-08 21:27:32,440 - WARNING -  * Debugger is active!
+2026-04-08 21:27:32,441 - INFO -  * Debugger PIN: 107-354-365
+2026-04-08 21:27:44,792 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:44] "GET / HTTP/1.1" 200 -
+2026-04-08 21:27:44,824 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:44] "GET /static/css/landing.css HTTP/1.1" 200 -
+2026-04-08 21:27:45,344 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:45] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-04-08 21:27:50,491 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:50] "GET /inspection HTTP/1.1" 200 -
+2026-04-08 21:27:50,519 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:50] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-04-08 21:27:50,519 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:50] "GET /static/js/inspection.js HTTP/1.1" 200 -
+2026-04-08 21:27:50,733 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:50] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-04-08 21:27:50,775 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:50] "GET /api/pcap HTTP/1.1" 200 -
+2026-04-08 21:27:52,833 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:52] "GET /api/pcap HTTP/1.1" 200 -
+2026-04-08 21:27:54,826 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:54] "GET /api/pcap HTTP/1.1" 200 -
+2026-04-08 21:27:56,750 - INFO - 127.0.0.1 - - [08/Apr/2026 21:27:56] "GET /api/pcap HTTP/1.1" 200 -
+2026-04-08 21:28:27,958 - INFO - CCAF Server starting on 127.0.0.1:5000
+2026-04-08 21:28:27,966 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-08 21:28:27,966 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-08 21:28:27,967 - INFO -  * Restarting with stat
+2026-04-08 21:28:28,081 - INFO - CCAF Server starting on 127.0.0.1:5000
+2026-04-08 21:28:28,087 - WARNING -  * Debugger is active!
+2026-04-08 21:28:28,088 - INFO -  * Debugger PIN: 107-354-365
