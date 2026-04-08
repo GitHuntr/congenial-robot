@@ -56,8 +56,12 @@
                         <div class="rt-inline-actions">
                             <span class="rt-badge {% if rule.status == 'active' %}bad{% else %}good{% endif %}">{{ rule.status.upper() }}</span>
                             {% if rule.status == 'active' %}
-                            <button onclick="revokeRule('{{ rule.target }}', '{{ rule.type }}')" title="Revoke Rule" class="rt-plain-icon-btn">
-                                <i class="fa-solid fa-xmark"></i>
+                            <button onclick="revokeRule('{{ rule.target }}', '{{ rule.type }}')" class="rt-btn rt-btn--danger rt-btn--sm">
+                                Unblock
+                            </button>
+                            {% else %}
+                            <button onclick="reblockRule('{{ rule.target }}', '{{ rule.type }}')" class="rt-btn rt-btn--primary rt-btn--sm">
+                                Re-block
                             </button>
                             {% endif %}
                         </div>
@@ -108,7 +112,7 @@
     }
 
     async function revokeRule(target, type) {
-        if (!confirm(`Revoke protection rule for ${target}?`)) return;
+        if (!confirm(`Unblock and revoke rule for ${target}?`)) return;
 
         try {
             const response = await fetch('/api/unblock', {
@@ -119,13 +123,35 @@
             const data = await response.json();
 
             if (data.success) {
-                showAlert(`Rule revoked for ${target}`, 'success');
+                showAlert(`Successfully unblocked ${target}`, 'success');
                 setTimeout(() => location.reload(), 1200);
             } else {
-                showAlert(data.error || 'Failed to revoke the rule.', 'error');
+                showAlert(data.error || 'Failed to unblock.', 'error');
             }
         } catch (e) {
-            showAlert('Network error while revoking the rule.', 'error');
+            showAlert('Network error while unblocking.', 'error');
+        }
+    }
+
+    async function reblockRule(target, type) {
+        if (!confirm(`Re-block ${target}?`)) return;
+
+        try {
+            const response = await fetch('/api/block', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ target, type, reason: 'Re-blocked via dashboard' })
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                showAlert(`Re-blocked ${target}`, 'success');
+                setTimeout(() => location.reload(), 1200);
+            } else {
+                showAlert(data.error || 'Failed to re-block.', 'error');
+            }
+        } catch (e) {
+            showAlert('Network error while re-blocking.', 'error');
         }
     }
 </script>

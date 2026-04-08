@@ -149,19 +149,23 @@ def unblock():
     if not target:
         return jsonify({'success': False, 'error': 'Target is required'})
     
-    success = fw_manager.unblock_domain(target)
-    if success:
-        import sqlite3
-        conn = sqlite3.connect(config.DB_PATH)
-        c = conn.cursor()
-        c.execute("UPDATE rules SET status='inactive' WHERE target=? AND type=?", (target, rule_type))
-        conn.commit()
-        conn.close()
-        
-        log_action('UNBLOCKED', target, rule_type)
-        return jsonify({'success': True})
-    else:
-        return jsonify({'success': False, 'error': 'Failed to unblock target'})
+    try:
+        success = fw_manager.unblock_domain(target)
+        if success:
+            import sqlite3
+            conn = sqlite3.connect(config.DB_PATH)
+            c = conn.cursor()
+            c.execute("UPDATE rules SET status='inactive' WHERE target=? AND type=?", (target, rule_type))
+            conn.commit()
+            conn.close()
+            
+            log_action('UNBLOCKED', target, rule_type)
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': f'Failed to unblock {target}. Ensure the server is running as root.'})
+    except Exception as e:
+        logging.error(f"Unblock API error: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)})
 
 @bp.route('/api/export')
 @login_required

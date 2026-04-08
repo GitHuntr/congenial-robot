@@ -27,14 +27,23 @@ def _is_internal_ip(ip_text):
 def _classify_zone(local_ip, remote_ip):
     """
     Classify socket direction from host perspective.
-    - internal: internal -> internal
+    - local-only: loopback or no remote endpoint (e.g., LISTEN, localhost)
+    - internal: private LAN -> private LAN (non-loopback)
     - outbound: internal -> external
     - inbound: external -> internal
     - external: external -> external
-    - local-only: no remote endpoint (e.g., LISTEN)
     """
     if not remote_ip or remote_ip == "*":
         return "local-only", "LOCAL LISTENER"
+
+    # Treat loopback-to-loopback as local, not internal
+    try:
+        local_obj = ipaddress.ip_address(local_ip)
+        remote_obj = ipaddress.ip_address(remote_ip)
+        if local_obj.is_loopback and remote_obj.is_loopback:
+            return "local-only", "LOOPBACK"
+    except ValueError:
+        pass
 
     local_internal = _is_internal_ip(local_ip)
     remote_internal = _is_internal_ip(remote_ip)
