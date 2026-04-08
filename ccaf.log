@@ -6430,3 +6430,6 @@ sqlite3.OperationalError: table rules has no column named created_by
 2026-04-08 23:19:01,190 - INFO - 127.0.0.1 - - [08/Apr/2026 23:19:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2026-04-08 23:19:03,115 - INFO - 127.0.0.1 - - [08/Apr/2026 23:19:03] "GET /rules HTTP/1.1" 200 -
 2026-04-08 23:19:03,133 - INFO - 127.0.0.1 - - [08/Apr/2026 23:19:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-08 23:25:45,000 - INFO - 127.0.0.1 - - [08/Apr/2026 23:25:45] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-08 23:25:45,008 - INFO - 127.0.0.1 - - [08/Apr/2026 23:25:45] "GET /login HTTP/1.1" 200 -
+2026-04-08 23:25:45,026 - INFO - 127.0.0.1 - - [08/Apr/2026 23:25:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
