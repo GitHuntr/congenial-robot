@@ -4,6 +4,8 @@
   const pollInterval = document.getElementById("pollInterval");
   const pollLabel = document.getElementById("pollLabel");
   const refreshNow = document.getElementById("refreshNow");
+  const runStatefulSim = document.getElementById("runStatefulSim");
+  const simSummary = document.getElementById("simSummary");
   const snapshotTime = document.getElementById("snapshotTime");
 
   const packetFeed = document.getElementById("packetFeed");
@@ -167,6 +169,13 @@
     state.filteredPackets = state.allPackets.filter(matchesFilters).slice(0, 30);
     packetFeed.innerHTML = "";
 
+    if (!state.allPackets.length) {
+      packetFeed.innerHTML =
+        '<p class="rt-empty">No live inet sockets captured right now. Generate traffic (open a website/app) or run with elevated privileges to inspect restricted processes.</p>';
+      renderInspector(null);
+      return;
+    }
+
     if (!state.filteredPackets.length) {
       packetFeed.innerHTML = '<p class="rt-empty">No packets match the active filters.</p>';
       renderInspector(null);
@@ -222,6 +231,44 @@
     }
   }
 
+  async function runSimulation() {
+    const payload = {
+      packets: [
+        { src_ip: "192.168.1.10", dst_ip: "8.8.8.8", src_port: 50000, dst_port: 443, protocol: "TCP", flags: ["SYN"] },
+        { src_ip: "8.8.8.8", dst_ip: "192.168.1.10", src_port: 443, dst_port: 50000, protocol: "TCP", flags: ["SYN", "ACK"] },
+        { src_ip: "192.168.1.10", dst_ip: "8.8.8.8", src_port: 50000, dst_port: 443, protocol: "TCP", flags: ["ACK"] },
+        { src_ip: "8.8.8.8", dst_ip: "192.168.1.10", src_port: 443, dst_port: 50000, protocol: "TCP", flags: ["ACK"] },
+        { src_ip: "1.2.3.4", dst_ip: "192.168.1.20", src_port: 4444, dst_port: 80, protocol: "TCP", flags: ["SYN"] },
+      ],
+    };
+
+    try {
+      const res = await fetch("/api/engine/simulate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        simSummary.innerHTML = "<div>Simulation failed</div>";
+        return;
+      }
+
+      const decisions = data.decisions || [];
+      const allowed = decisions.filter((d) => d.decision === "allow").length;
+      const dropped = decisions.filter((d) => d.decision === "drop").length;
+      const states = (data.state_table || []).length;
+
+      simSummary.innerHTML = `
+        <div>Simulation processed: ${decisions.length}</div>
+        <div>Allowed: ${allowed} • Dropped: ${dropped}</div>
+        <div>State table entries: ${states}</div>
+      `;
+    } catch (_err) {
+      simSummary.innerHTML = "<div>Simulation error</div>";
+    }
+  }
+
   function resetTimer() {
     if (state.timer) clearInterval(state.timer);
     state.timer = setInterval(fetchPackets, state.intervalSec * 1000);
@@ -237,6 +284,7 @@
   });
 
   refreshNow.addEventListener("click", fetchPackets);
+  if (runStatefulSim) runStatefulSim.addEventListener("click", runSimulation);
 
   pollLabel.textContent = `${state.intervalSec}s`;
   fetchPackets();

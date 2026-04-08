@@ -921,6 +921,18 @@ button.success,
     height: 300px;
 }
 
+.rt-card--inspection-stream {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.rt-feed--inspection {
+    /* Fill meaningful viewport space instead of the old 300px strip */
+    height: clamp(460px, 62vh, 900px);
+    max-height: none;
+}
+
 .rt-empty {
     color: var(--muted);
     text-align: center;
@@ -1268,5 +1280,9 @@ button.success,
 
     .rt-feed {
         max-height: 340px;
+    }
+
+    .rt-feed--inspection {
+        height: 420px;
     }
 }

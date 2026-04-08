@@ -5,9 +5,11 @@ from functools import wraps
 from core.database import get_rules, get_logs, get_stats, save_rule, log_action, verify_user, create_user
 from core.firewall import fw_manager
 from core.config import config
+from core.rule_engine import FirewallLogicEngine, packet_from_dict
 import os
 
 bp = Blueprint('main', __name__)
+logic_engine = FirewallLogicEngine()
 
 # --- Frontend Routes ---
 
@@ -201,3 +203,53 @@ def internal_server_error(e):
 def api_pcap():
     from core.network_scanner import get_live_connections
     return jsonify(get_live_connections())
+
+@bp.route('/api/engine/simulate', methods=['POST'])
+@login_required
+def simulate_packet_stream():
+    """
+    Process a stream of simulated packets through firewall filtering modules.
+    Expected payload:
+    {
+      "packets": [
+        {
+          "src_ip":"192.168.1.10",
+          "dst_ip":"8.8.8.8",
+          "src_port":50000,
+          "dst_port":443,
+          "protocol":"TCP",
+          "flags":["SYN"]
+        }
+      ]
+    }
+    """
+    data = request.get_json(silent=True) or {}
+    raw_packets = data.get('packets', [])
+    if not isinstance(raw_packets, list):
+        return jsonify({'success': False, 'error': '`packets` must be a list'}), 400
+
+    try:
+        packets = [packet_from_dict(item) for item in raw_packets]
+    except (KeyError, TypeError, ValueError) as exc:
+        return jsonify({'success': False, 'error': f'Invalid packet schema: {exc}'}), 400
+
+    decisions = logic_engine.process_stream(packets)
+    return jsonify({
+        'success': True,
+        'processed': len(decisions),
+        'decisions': decisions,
+        'state_table': logic_engine.get_state_table()
+    })
+
+@bp.route('/api/engine/state-table', methods=['GET', 'DELETE'])
+@login_required
+def state_table():
+    if request.method == 'DELETE':
+        logic_engine.reset()
+        return jsonify({'success': True, 'message': 'State table cleared'})
+
+    return jsonify({
+        'success': True,
+        'entries': logic_engine.get_state_table(),
+        'count': len(logic_engine.get_state_table())
+    })

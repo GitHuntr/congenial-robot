@@ -37,6 +37,14 @@
             <button class="rt-btn rt-btn--primary" id="refreshNow" type="button">
                 <i class="fa-solid fa-rotate"></i> Refresh Snapshot
             </button>
+
+            <div class="rt-divider"></div>
+            <button class="rt-btn" id="runStatefulSim" type="button">
+                <i class="fa-solid fa-play"></i> Run Stateful TCP Simulation
+            </button>
+            <div class="rt-minihelp" id="simSummary">
+                <div>Simulation: not run</div>
+            </div>
         </div>
     </aside>
 
@@ -74,14 +82,14 @@
         </div>
     </section>
 
-    <section class="rt-card rt-span-2 rt-card--feed">
+    <section class="rt-card rt-span-2 rt-card--feed rt-card--inspection-stream">
         <div class="rt-card-head">
             <div>
                 <div class="rt-title">Packet Header Stream</div>
                 <div class="rt-sub">Real host socket metadata from psutil (`inet`) with process context</div>
             </div>
         </div>
-        <div class="rt-feed rt-feed--fixed" id="packetFeed">
+        <div class="rt-feed rt-feed--inspection" id="packetFeed">
             <p class="rt-empty">Waiting for packet snapshot...</p>
         </div>
     </section>

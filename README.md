@@ -1,5 +1,67 @@
 # CCAF System Restructuring & Enhancement Plan
 
+## ✅ Question 7 Compliance (Firewall Logic Engine)
+
+Implemented a working **Firewall Logic Engine** for simulated packet streams with a true
+**stateful TCP inspection table**.
+
+### What is implemented
+
+- Packet-stream engine: `core/rule_engine.py`
+  - `FirewallLogicEngine.process_stream(...)`
+  - Modular filter pipeline with `StatefulInspectionFilter`
+- Stateful TCP table for active sessions:
+  - Tracks `SYN_SENT -> SYN_RECEIVED -> ESTABLISHED -> CLOSING`
+  - Maintains per-flow metadata and idle timeout cleanup
+- Required policy enforcement:
+  - **Inbound packets are dropped by default**
+  - **Inbound packets are allowed only if they map to an established session initiated from internal network**
+- API endpoints for evaluator/demo use:
+  - `POST /api/engine/simulate` to process simulated packet streams
+  - `GET /api/engine/state-table` to inspect active states
+  - `DELETE /api/engine/state-table` to clear state table
+- Automated tests:
+  - `tests/test_rule_engine.py` verifies all key stateful behaviors
+
+### Example simulate payload
+
+```json
+{
+  "packets": [
+    {
+      "src_ip": "192.168.1.10",
+      "dst_ip": "8.8.8.8",
+      "src_port": 50000,
+      "dst_port": 443,
+      "protocol": "TCP",
+      "flags": ["SYN"]
+    },
+    {
+      "src_ip": "8.8.8.8",
+      "dst_ip": "192.168.1.10",
+      "src_port": 443,
+      "dst_port": 50000,
+      "protocol": "TCP",
+      "flags": ["SYN", "ACK"]
+    },
+    {
+      "src_ip": "192.168.1.10",
+      "dst_ip": "8.8.8.8",
+      "src_port": 50000,
+      "dst_port": 443,
+      "protocol": "TCP",
+      "flags": ["ACK"]
+    }
+  ]
+}
+```
+
+### Run tests
+
+```bash
+venv/bin/python -m pytest -q tests/test_rule_engine.py
+```
+
 ## 📁 Proposed File Structure
 
 ```
