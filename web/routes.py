@@ -29,11 +29,15 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@bp.route('/')
+@bp.route('/dashboard')
 @login_required
 def dashboard():
     stats = get_stats()
     return render_template('dashboard.html', stats=stats, system_info=get_system_info())
+
+@bp.route('/')
+def landing():
+    return render_template('landing.html', system_info=get_system_info())
 
 @bp.route('/connections')
 @login_required

@@ -4,17 +4,11 @@
 {% block header_title %}Deep Packet Inspection Console{% endblock %}
 
 {% block content %}
-<main class="rt-grid rt-grid--inspection">
-    <aside class="rt-card">
-        <div class="rt-card-head">
-            <div>
-                <div class="rt-title">Inspection Controls</div>
-                <div class="rt-sub">Choose traffic scope and update cadence</div>
-            </div>
-            <span class="rt-chip rt-chip--info">DPI</span>
-        </div>
-        <div class="rt-controls">
-            <label for="zoneFilter">Traffic Zone</label>
+<!-- ── Top toolbar: filters + zone counters in one compact strip ── -->
+<div class="dpi-toolbar">
+    <div class="dpi-toolbar__filters">
+        <div class="dpi-filter-group">
+            <label for="zoneFilter">Zone</label>
             <select id="zoneFilter">
                 <option value="all">All Traffic</option>
                 <option value="internal">Internal</option>
@@ -22,83 +16,69 @@
                 <option value="inbound">Inbound</option>
                 <option value="external">External</option>
             </select>
-
+        </div>
+        <div class="dpi-filter-group">
             <label for="protocolFilter">Protocol</label>
             <select id="protocolFilter">
-                <option value="all">All Protocols</option>
+                <option value="all">All</option>
                 <option value="TCP">TCP</option>
                 <option value="UDP">UDP</option>
             </select>
-
-            <label for="pollInterval">Poll Interval (seconds)</label>
-            <input id="pollInterval" class="rt-range" type="range" min="1" max="10" value="2">
-            <div class="rt-pill rt-pill--mono rt-inspection-pill" id="pollLabel">2s</div>
-
-            <button class="rt-btn rt-btn--primary" id="refreshNow" type="button">
-                <i class="fa-solid fa-rotate"></i> Refresh Snapshot
-            </button>
-
-            <div class="rt-divider"></div>
-            <button class="rt-btn" id="runStatefulSim" type="button">
-                <i class="fa-solid fa-play"></i> Run Stateful TCP Simulation
-            </button>
-            <div class="rt-minihelp" id="simSummary">
-                <div>Simulation: not run</div>
+        </div>
+        <div class="dpi-filter-group">
+            <label for="pollInterval">Refresh</label>
+            <div class="dpi-speed-row">
+                <input id="pollInterval" type="range" min="1" max="10" value="2">
+                <span class="dpi-speed-label" id="pollLabel">2s</span>
             </div>
         </div>
-    </aside>
-
-    <section class="rt-card rt-span-2">
-        <div class="rt-card-head">
-            <div>
-                <div class="rt-title">Firewall Zone Summary</div>
-                <div class="rt-sub">Boundary-aware traffic breakdown based on private network ranges</div>
-            </div>
-            <span class="rt-chip rt-chip--warn" id="snapshotTime">as-of —</span>
+        <div class="dpi-live-indicator" id="liveIndicator">
+            <span class="rt-dot rt-dot--good"></span>
+            <span>LIVE</span>
+            <span class="dpi-timestamp" id="snapshotTime">—</span>
         </div>
-        <div class="rt-card-body">
-            <div class="rt-zone-grid">
-                <div class="rt-zone-card rt-zone-card--internal">
-                    <div class="rt-zone-label">Internal</div>
-                    <div class="rt-zone-value" id="zoneInternal">0</div>
-                    <div class="rt-zone-sub">src + dst in private ranges</div>
-                </div>
-                <div class="rt-zone-card rt-zone-card--outbound">
-                    <div class="rt-zone-label">Outbound</div>
-                    <div class="rt-zone-value" id="zoneOutbound">0</div>
-                    <div class="rt-zone-sub">private source to public destination</div>
-                </div>
-                <div class="rt-zone-card rt-zone-card--inbound">
-                    <div class="rt-zone-label">Inbound</div>
-                    <div class="rt-zone-value" id="zoneInbound">0</div>
-                    <div class="rt-zone-sub">public source to private destination</div>
-                </div>
-                <div class="rt-zone-card rt-zone-card--external">
-                    <div class="rt-zone-label">External</div>
-                    <div class="rt-zone-value" id="zoneExternal">0</div>
-                    <div class="rt-zone-sub">public to public traffic</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <section class="rt-card rt-span-2 rt-card--feed rt-card--inspection-stream">
+    <div class="dpi-toolbar__zones">
+        <div class="dpi-zone dpi-zone--internal">
+            <span class="dpi-zone__count" id="zoneInternal">0</span>
+            <span class="dpi-zone__label">Internal</span>
+        </div>
+        <div class="dpi-zone dpi-zone--outbound">
+            <span class="dpi-zone__count" id="zoneOutbound">0</span>
+            <span class="dpi-zone__label">Outbound</span>
+        </div>
+        <div class="dpi-zone dpi-zone--inbound">
+            <span class="dpi-zone__count" id="zoneInbound">0</span>
+            <span class="dpi-zone__label">Inbound</span>
+        </div>
+        <div class="dpi-zone dpi-zone--external">
+            <span class="dpi-zone__count" id="zoneExternal">0</span>
+            <span class="dpi-zone__label">External</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── Main body: stream + inspector side by side ── -->
+<div class="dpi-body">
+    <section class="rt-card dpi-stream-card">
         <div class="rt-card-head">
             <div>
                 <div class="rt-title">Packet Header Stream</div>
-                <div class="rt-sub">Real host socket metadata from psutil (`inet`) with process context</div>
+                <div class="rt-sub">Real-time host socket metadata with process context</div>
             </div>
+            <span class="rt-chip rt-chip--info" id="packetCount">0 flows</span>
         </div>
         <div class="rt-feed rt-feed--inspection" id="packetFeed">
-            <p class="rt-empty">Waiting for packet snapshot...</p>
+            <p class="rt-empty">Connecting to live stream...</p>
         </div>
     </section>
 
-    <aside class="rt-card">
+    <aside class="rt-card dpi-inspector-card">
         <div class="rt-card-head">
             <div>
                 <div class="rt-title">Header Inspector</div>
-                <div class="rt-sub">Context for the selected packet flow</div>
+                <div class="rt-sub">Selected packet flow details</div>
             </div>
         </div>
         <div class="rt-card-body">
@@ -120,7 +100,7 @@
             </div>
         </div>
     </aside>
-</main>
+</div>
 {% endblock %}
 
 {% block scripts %}

@@ -20,7 +20,7 @@
             </div>
 
             <nav>
-                <a href="/" class="nav-item {% if request.path == '/' %}active{% endif %}">
+                <a href="/dashboard" class="nav-item {% if request.path == '/dashboard' %}active{% endif %}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
                     </svg>
@@ -79,6 +79,16 @@
             </div>
         </aside>
 
+        <!-- Particle Background shared across dashboard -->
+        <div class="particles-container">
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+            <div class="particle p4"></div>
+            <div class="particle p5"></div>
+            <div class="particle p6"></div>
+        </div>
+
         <main class="main-content">
             <div class="main-shell">
                 <header class="top-header">
@@ -123,6 +133,40 @@
                 alert.style.display = 'none';
             }, 5000);
         }
+    </script>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-trail"></div>
+
+    <script>
+        // Custom Cursor Logic
+        const dot = document.querySelector('.cursor-dot');
+        const trail = document.querySelector('.cursor-trail');
+        
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.15;
+            trailY += (mouseY - trailY) * 0.15;
+            trail.style.transform = `translate(${trailX}px, ${trailY}px)`;
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        // Hover effect for interactive elements
+        const interactables = document.querySelectorAll('a, button, select, input, .rt-item--clickable, .hero-chip');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => trail.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => trail.classList.remove('hovering'));
+        });
     </script>
     {% block scripts %}{% endblock %}
 </body>

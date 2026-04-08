@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCAF - Cybersecurity Firewall Engine</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i data-lucide="shield-check" class="brand-icon pulse-fast"></i>
+            <span>CCAF Engine</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#documentation">Documentation</a>
+        </div>
+        <div class="nav-actions">
+            <a href="/login" class="nav-btn-hollow">Login</a>
+            <a href="/signup" class="btn-primary">Register <i data-lucide="user-plus" class="btn-icon"></i></a>
+        </div>
+    </nav>
+
+    <!-- Particles overlay -->
+    <div class="particles-container">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+        <div class="particle p6"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <!-- Floating Elements -->
+        <div class="floating-node node-1 glow-node">
+            <i data-lucide="activity"></i>
+        </div>
+        <div class="floating-node node-2 glow-node">
+            <i data-lucide="network"></i>
+        </div>
+        <div class="floating-node node-3 glow-node">
+            <i data-lucide="lock"></i>
+        </div>
+        <div class="floating-node node-4 glow-node">
+            <i data-lucide="server"></i>
+        </div>
+
+        <div class="hero-content">
+            <div class="badge-new slide-down">
+                <span class="badge-pulse"></span>
+                <span>v2.0 Stateful Engine Live</span>
+            </div>
+            <h1 class="hero-title fw-title">The Ultimate Stateful<br>Firewall Engine</h1>
+            <p class="hero-subtitle fw-subtitle">CCAF delivers deep packet inspection with zero latency, providing complete process-level visibility and advanced socket-to-policy enforcement for your entire environment.</p>
+            
+            <div class="hero-stats fade-in-up delay-2">
+                <div class="h-stat">
+                    <h4>0ms</h4>
+                    <span>Latency Impact</span>
+                </div>
+                <div class="h-stat">
+                    <h4>L7</h4>
+                    <span>Process Context</span>
+                </div>
+                <div class="h-stat">
+                    <h4>100%</h4>
+                    <span>State Tracking</span>
+                </div>
+            </div>
+
+            <div class="hero-cta fade-in-up delay-3">
+                <a href="/dashboard" class="btn-cyan glow-hover">Launch Analytics <i data-lucide="bar-chart-2"></i></a>
+                <a href="/inspection" class="btn-glass hover-shift">Live Inspection <i data-lucide="eye"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="how-it-works scroll-trigger">
+        <div class="how-header">
+            <h2>Firewall Processing Pipeline</h2>
+            <p>Our engine processes thousands of active connections instantly. See how the stateful inspection pipeline secures your boundaries sequentially.</p>
+        </div>
+        
+        <div class="how-grid">
+            <div class="how-steps">
+                <div class="step">
+                    <span class="step-num">1</span>
+                    <div class="step-content">
+                        <span class="step-title">Socket Discovery</span>
+                        <p class="step-desc">Identifying active process sockets (TCP/UDP) and mapping raw connections immediately via os-level utilities.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-num">2</span>
+                    <div class="step-content">
+                        <span class="step-title">Zone Classification</span>
+                        <p class="step-desc">Automatically mapping local and remote addresses against RFC1918 boundaries to determine Internal, Outbound, or Inbound directions.</p>
+                    </div>
+                </div>
+                <div class="step active scale-up-pulse">
+                    <span class="step-num active-num pulse-circle">3</span>
+                    <div class="step-content">
+                        <span class="step-title active-title glow-text">Stateful Analysis</span>
+                        <p class="step-desc">Crucial context building. The engine tracks exact TCP negotiation streams from SYN-SENT to ESTABLISHED, linking the raw socket to its exact process PID and application name.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-num">4</span>
+                    <div class="step-content">
+                        <span class="step-title">Policy Enforcement</span>
+                        <p class="step-desc">Applying live restriction rules instantly, breaking connections that violate explicit blocklists or default-deny inbound patterns.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-num">5</span>
+                    <div class="step-content">
+                        <span class="step-title">Continuous Logging</span>
+                        <p class="step-desc">Pushing threat analytics directly to the dashboard canvas, keeping the UI perfectly in sync for real-time monitoring.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="how-visual float-card">
+                <div class="glass-card card-glow-animate">
+                    <i data-lucide="server-crash" class="glass-icon bounce-soft"></i>
+                    <div class="glass-lines">
+                        <div class="line scan-line"></div>
+                        <div class="line scan-line delayed"></div>
+                        <div class="line short scan-line fast"></div>
+                    </div>
+                    <div class="glass-circles">
+                        <div class="circle half spin-slow"></div>
+                        <div class="circle full pulse-glow"></div>
+                        <div class="circle quarter spin-reverse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="how-it-works scroll-trigger" style="background: rgba(14, 23, 48, 0.3); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
+        <div class="how-header" style="max-width: 800px;">
+            <h2>System Documentation</h2>
+            <p>CCAF (ConnTrack Context-Aware Firewall) operates completely locally using Python and Flask, deeply integrating with host-level metrics to enforce zero-latency connection rules.</p>
+        </div>
+        
+        <div class="how-grid" style="margin-top: 2rem;">
+            <!-- Tech Stack & Architecture -->
+            <div class="glass-card" style="height: auto; transform: none; box-shadow: none; padding: 2.5rem; text-align: left; align-items: flex-start; justify-content: flex-start;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--cyan);">Architecture & Stack</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">The engine consists of two core components running synchronously to maintain a highly-optimized live state table.</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                    <li style="display: flex; gap: 0.8rem; flex-direction: column;">
+                        <strong style="color: #fff;"><i data-lucide="server" style="display: inline; width: 14px; height: 14px; color: var(--cyan);"></i> Flask API Backend</strong>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Handles the local dashboard UI and exposes CRUD endpoints for dynamic rule management (`/api/block`, `/api/unblock`).</span>
+                    </li>
+                    <li style="display: flex; gap: 0.8rem; flex-direction: column;">
+                        <strong style="color: #fff;"><i data-lucide="cpu" style="display: inline; width: 14px; height: 14px; color: var(--cyan);"></i> Stateful Logic Engine</strong>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Located in `core/rule_engine.py`. Monitors connections via OS-level socket APIs (`psutil`) and maintains established TCP states from SYN-SENT through FIN-WAIT.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Deployment & Endpoints -->
+            <div class="glass-card" style="height: auto; transform: none; box-shadow: none; padding: 2.5rem; text-align: left; align-items: flex-start; justify-content: flex-start;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--good, #0df47a);">Quick Start & API</h3>
+                
+                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #fff;">Launch the Engine</h4>
+                <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; width: 100%; font-family: monospace; font-size: 0.85rem; color: var(--cyan); margin-bottom: 1.5rem;">
+                    $ source venv/bin/activate<br>
+                    $ sudo python run.py
+                </div>
+
+                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #fff;">Simulate Traffic (Testing Engine)</h4>
+                <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; width: 100%; font-family: monospace; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">
+                    <span style="color: #ff8da3;">POST</span> /api/engine/simulate<br>
+                    <span style="color: #7efac6;">Content-Type:</span> application/json<br><br>
+                    {<br>
+                    &nbsp;&nbsp;"packets": [{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"src_ip": "192.168.1.10",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"dst_ip": "8.8.8.8",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"src_port": 50000,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"protocol": "TCP",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"flags": ["SYN"]<br>
+                    &nbsp;&nbsp;}]<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-trail"></div>
+
+    <script>
+        lucide.createIcons();
+        
+        // Simple scroll observer for trigger animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.scroll-trigger').forEach((el) => observer.observe(el));
+
+        // Custom Cursor Logic
+        const dot = document.querySelector('.cursor-dot');
+        const trail = document.querySelector('.cursor-trail');
+        
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.15;
+            trailY += (mouseY - trailY) * 0.15;
+            trail.style.transform = `translate(${trailX}px, ${trailY}px)`;
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        // Hover effect for interactive elements
+        const interactables = document.querySelectorAll('a, button, .step.active, .hero-stat');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => trail.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => trail.classList.remove('hovering'));
+        });
+    </script>
+</body>
+</html>
