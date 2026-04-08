@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}404 Not Found{% endblock %}
+{% block header_title %}Missing Resource{% endblock %}
+
+{% block content %}
+<div class="error-shell">
+    <div class="error-panel">
+        <h1 class="error-code not-found">404</h1>
+        <h2>Endpoint Not Found</h2>
+        <p class="error-text">
+            The requested page or API endpoint does not exist in this CCAF instance.
+        </p>
+        <a href="/" class="btn-link">Return to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

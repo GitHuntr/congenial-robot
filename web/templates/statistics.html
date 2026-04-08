@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block title %}Statistics{% endblock %}
+{% block header_title %}Security Analytics{% endblock %}
+
+{% block content %}
+<main class="rt-grid rt-grid--analytics">
+    <aside class="rt-card">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Blocked Traffic Trend</div>
+                <div class="rt-sub">Last 7 days of blocked packet activity</div>
+            </div>
+            <span class="rt-chip rt-chip--info">TREND</span>
+        </div>
+        <div class="rt-card-foot rt-card-foot--plain">
+            <canvas id="trafficChart"></canvas>
+        </div>
+    </aside>
+
+    <aside class="rt-card">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Threat Category Volume</div>
+                <div class="rt-sub">Detected high-risk traffic classes</div>
+            </div>
+            <span class="rt-chip rt-chip--danger">THREAT</span>
+        </div>
+        <div class="rt-card-foot rt-card-foot--plain">
+            <canvas id="vulnChart"></canvas>
+        </div>
+    </aside>
+
+    <aside class="rt-card rt-span-2">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Threat Origin Types</div>
+                <div class="rt-sub">Distribution across domain, IP, and application vectors</div>
+            </div>
+            <span class="rt-chip rt-chip--warn">ORIGIN</span>
+        </div>
+        <div class="rt-card-foot rt-card-foot--plain rt-card-foot--chart">
+            <canvas id="originChart"></canvas>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    Chart.defaults.color = '#A9B6D3';
+    Chart.defaults.font.family = "Outfit, system-ui, -apple-system, sans-serif";
+
+    const ctxTraffic = document.getElementById('trafficChart').getContext('2d');
+    new Chart(ctxTraffic, {
+        type: 'line',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Blocked Packets',
+                data: [12, 19, 3, 5, 2, 3, 10],
+                borderColor: '#00f0ff',
+                backgroundColor: 'rgba(0, 240, 255, 0.18)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+                x: { grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+            }
+        }
+    });
+
+    const ctxVuln = document.getElementById('vulnChart').getContext('2d');
+    new Chart(ctxVuln, {
+        type: 'bar',
+        data: {
+            labels: ['Malware', 'Phishing', 'DDoS', 'Intrusions'],
+            datasets: [{
+                label: 'Threats',
+                data: [5, 12, 3, 7],
+                backgroundColor: ['#ff4d6d', '#ffb020', '#24d6ff', '#0df47a'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    const ctxOrigin = document.getElementById('originChart').getContext('2d');
+    new Chart(ctxOrigin, {
+        type: 'doughnut',
+        data: {
+            labels: ['Domains', 'IPs', 'Applications'],
+            datasets: [{
+                data: [40, 35, 25],
+                backgroundColor: ['#00f0ff', '#24d6ff', '#ff4d6d'],
+                borderWidth: 2,
+                borderColor: '#070A12'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'right' }
+            }
+        }
+    });
+</script>
+{% endblock %}

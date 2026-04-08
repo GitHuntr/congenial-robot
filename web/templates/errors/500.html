@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}500 Error{% endblock %}
+{% block header_title %}Server Error{% endblock %}
+
+{% block content %}
+<div class="error-shell">
+    <div class="error-panel">
+        <h1 class="error-code server-error">500</h1>
+        <h2>Internal Server Fault</h2>
+        <p class="error-text">
+            CCAF encountered an internal error while processing your request. Check runtime logs for diagnostics.
+        </p>
+        <a href="/" class="btn-link danger">Return to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

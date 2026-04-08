@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block title %}Packet Inspection{% endblock %}
+{% block header_title %}Deep Packet Inspection Console{% endblock %}
+
+{% block content %}
+<main class="rt-grid rt-grid--inspection">
+    <aside class="rt-card">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Inspection Controls</div>
+                <div class="rt-sub">Choose traffic scope and update cadence</div>
+            </div>
+            <span class="rt-chip rt-chip--info">DPI</span>
+        </div>
+        <div class="rt-controls">
+            <label for="zoneFilter">Traffic Zone</label>
+            <select id="zoneFilter">
+                <option value="all">All Traffic</option>
+                <option value="internal">Internal</option>
+                <option value="outbound">Outbound</option>
+                <option value="inbound">Inbound</option>
+                <option value="external">External</option>
+            </select>
+
+            <label for="protocolFilter">Protocol</label>
+            <select id="protocolFilter">
+                <option value="all">All Protocols</option>
+                <option value="TCP">TCP</option>
+                <option value="UDP">UDP</option>
+            </select>
+
+            <label for="pollInterval">Poll Interval (seconds)</label>
+            <input id="pollInterval" class="rt-range" type="range" min="1" max="10" value="2">
+            <div class="rt-pill rt-pill--mono rt-inspection-pill" id="pollLabel">2s</div>
+
+            <button class="rt-btn rt-btn--primary" id="refreshNow" type="button">
+                <i class="fa-solid fa-rotate"></i> Refresh Snapshot
+            </button>
+        </div>
+    </aside>
+
+    <section class="rt-card rt-span-2">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Firewall Zone Summary</div>
+                <div class="rt-sub">Boundary-aware traffic breakdown based on private network ranges</div>
+            </div>
+            <span class="rt-chip rt-chip--warn" id="snapshotTime">as-of —</span>
+        </div>
+        <div class="rt-card-body">
+            <div class="rt-zone-grid">
+                <div class="rt-zone-card rt-zone-card--internal">
+                    <div class="rt-zone-label">Internal</div>
+                    <div class="rt-zone-value" id="zoneInternal">0</div>
+                    <div class="rt-zone-sub">src + dst in private ranges</div>
+                </div>
+                <div class="rt-zone-card rt-zone-card--outbound">
+                    <div class="rt-zone-label">Outbound</div>
+                    <div class="rt-zone-value" id="zoneOutbound">0</div>
+                    <div class="rt-zone-sub">private source to public destination</div>
+                </div>
+                <div class="rt-zone-card rt-zone-card--inbound">
+                    <div class="rt-zone-label">Inbound</div>
+                    <div class="rt-zone-value" id="zoneInbound">0</div>
+                    <div class="rt-zone-sub">public source to private destination</div>
+                </div>
+                <div class="rt-zone-card rt-zone-card--external">
+                    <div class="rt-zone-label">External</div>
+                    <div class="rt-zone-value" id="zoneExternal">0</div>
+                    <div class="rt-zone-sub">public to public traffic</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rt-card rt-span-2 rt-card--feed">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Packet Header Stream</div>
+                <div class="rt-sub">Real host socket metadata from psutil (`inet`) with process context</div>
+            </div>
+        </div>
+        <div class="rt-feed rt-feed--fixed" id="packetFeed">
+            <p class="rt-empty">Waiting for packet snapshot...</p>
+        </div>
+    </section>
+
+    <aside class="rt-card">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Header Inspector</div>
+                <div class="rt-sub">Context for the selected packet flow</div>
+            </div>
+        </div>
+        <div class="rt-card-body">
+            <div class="rt-inspector-grid">
+                <div class="rt-inspector-row"><span>ID</span><span id="hId">—</span></div>
+                <div class="rt-inspector-row"><span>Source</span><span id="hSource">—</span></div>
+                <div class="rt-inspector-row"><span>Destination</span><span id="hDestination">—</span></div>
+                <div class="rt-inspector-row"><span>IP Family</span><span id="hFamily">—</span></div>
+                <div class="rt-inspector-row"><span>Protocol</span><span id="hProtocol">—</span></div>
+                <div class="rt-inspector-row"><span>State</span><span id="hState">—</span></div>
+                <div class="rt-inspector-row"><span>Zone</span><span id="hZone">—</span></div>
+                <div class="rt-inspector-row"><span>Direction</span><span id="hDirection">—</span></div>
+                <div class="rt-inspector-row"><span>Local Port</span><span id="hLocalPort">—</span></div>
+                <div class="rt-inspector-row"><span>Remote Port</span><span id="hRemotePort">—</span></div>
+                <div class="rt-inspector-row"><span>PID</span><span id="hPid">—</span></div>
+                <div class="rt-inspector-row"><span>Process</span><span id="hProcess">—</span></div>
+                <div class="rt-inspector-row"><span>Risk Hint</span><span id="hRisk">—</span></div>
+                <div class="rt-inspector-row"><span>Policy Hint</span><span id="hPolicy">—</span></div>
+            </div>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/inspection.js') }}"></script>
+{% endblock %}

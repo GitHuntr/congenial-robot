@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}Rules{% endblock %}
+{% block header_title %}Firewall Policy Control{% endblock %}
+
+{% block content %}
+<main class="rt-grid rt-grid--split">
+    <aside class="rt-card">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Add Restriction Rule</div>
+                <div class="rt-sub">Block a domain, IP, or application process</div>
+            </div>
+            <span class="rt-chip rt-chip--info">NEW</span>
+        </div>
+
+        <div class="rt-controls">
+            <label for="targetInput">Target Domain/App/IP</label>
+            <input type="text" id="targetInput" placeholder="e.g., example.com or cmd.exe">
+
+            <label for="typeSelect">Target Type</label>
+            <select id="typeSelect">
+                <option value="domain">Website Domain</option>
+                <option value="ip">IP Address</option>
+                <option value="application">Application / Process</option>
+            </select>
+
+            <label for="reasonInput">Policy Reason (Optional)</label>
+            <textarea id="reasonInput" rows="3" placeholder="Why should this target be blocked?"></textarea>
+
+            <button onclick="enforceRule()" class="rt-btn rt-btn--primary">
+                <i class="fa-solid fa-shield"></i> Enforce Rule
+            </button>
+        </div>
+    </aside>
+
+    <aside class="rt-card rt-card--feed">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Current Policies</div>
+                <div class="rt-sub">Active and inactive firewall rules</div>
+            </div>
+        </div>
+
+        <div class="rt-feed rt-feed--tall">
+            {% if rules|length == 0 %}
+                <p class="rt-empty">No policy rules have been deployed yet.</p>
+            {% else %}
+                {% for rule in rules %}
+                <div class="rt-item">
+                    <div class="rt-item-top">
+                        <div class="rt-item-title">
+                            {{ rule.target }}
+                            <span class="rt-meta-inline">({{ rule.type }})</span>
+                        </div>
+                        <div class="rt-inline-actions">
+                            <span class="rt-badge {% if rule.status == 'active' %}bad{% else %}good{% endif %}">{{ rule.status.upper() }}</span>
+                            {% if rule.status == 'active' %}
+                            <button onclick="revokeRule('{{ rule.target }}', '{{ rule.type }}')" title="Revoke Rule" class="rt-plain-icon-btn">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="rt-item-bottom">
+                        <div class="rt-item-meta">Applied: {{ rule.created_at }}</div>
+                    </div>
+                    {% if rule.reason %}
+                    <div class="rt-item-note">Note: {{ rule.reason }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    async function enforceRule() {
+        const target = document.getElementById('targetInput').value;
+        const type = document.getElementById('typeSelect').value;
+        const reason = document.getElementById('reasonInput').value;
+
+        if (!target) {
+            showAlert('Target is required to enforce a policy.', 'error');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/block', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ target, type, reason })
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                showAlert(`Rule enforced for ${target}`, 'success');
+                setTimeout(() => location.reload(), 1200);
+            } else {
+                showAlert(data.error || 'Failed to apply the rule.', 'error');
+            }
+        } catch (e) {
+            showAlert('Network error while applying the rule.', 'error');
+        }
+    }
+
+    async function revokeRule(target, type) {
+        if (!confirm(`Revoke protection rule for ${target}?`)) return;
+
+        try {
+            const response = await fetch('/api/unblock', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ target, type })
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                showAlert(`Rule revoked for ${target}`, 'success');
+                setTimeout(() => location.reload(), 1200);
+            } else {
+                showAlert(data.error || 'Failed to revoke the rule.', 'error');
+            }
+        } catch (e) {
+            showAlert('Network error while revoking the rule.', 'error');
+        }
+    }
+</script>
+{% endblock %}

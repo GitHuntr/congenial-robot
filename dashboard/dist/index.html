@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!-- WebGL Canvas -->
+<canvas id="glCanvas"></canvas>
+
+<!-- Grain overlay -->
+<div id="grain"></div>
+
+<!-- ==================== WINDOWS ==================== -->
+
+<!-- Window: System Vitals -->
+<div class="win" id="win-vitals" style="width:260px;" data-color="0.55,0.1,0.95">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">SYSTEM VITALS</span>
+  </div>
+  <div class="win-body">
+    <div class="stat-row">
+      <div>
+        <div class="stat-val" id="cpu-val">73%</div>
+        <div class="stat-label">CPU Load</div>
+      </div>
+      <div style="text-align:right">
+        <div class="stat-val" id="mem-val">4.2GB</div>
+        <div class="stat-label">Memory</div>
+      </div>
+    </div>
+    <div class="mini-chart" id="cpu-bars"></div>
+    <div class="divider"></div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>UPTIME</span><span id="uptime">00:00:00</span>
+    </div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>TEMP</span><span id="temp-val">42°C</span>
+    </div>
+  </div>
+</div>
+
+<!-- Window: Network -->
+<div class="win" id="win-net" style="width:240px;" data-color="0.1,0.55,0.95">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">NETWORK</span>
+  </div>
+  <div class="win-body">
+    <div class="radial-wrap">
+      <svg class="radial" width="110" height="110" viewBox="0 0 110 110">
+        <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="10" />
+        <circle id="radial-arc" cx="55" cy="55" r="42" fill="none" stroke="#4af" stroke-width="10" stroke-dasharray="263.8" stroke-dashoffset="80" stroke-linecap="round" transform="rotate(-90 55 55)" style="filter:drop-shadow(0 0 8px #4af)" />
+        <text x="55" y="52" text-anchor="middle" font-size="22">68%</text>
+        <text x="55" y="68" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.4)">BANDWIDTH</text>
+      </svg>
+    </div>
+    <div class="divider"></div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>↑ UP</span><span id="net-up">12.4 MB/s</span>
+    </div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>↓ DOWN</span><span id="net-down">8.1 MB/s</span>
+    </div>
+  </div>
+</div>
+
+<!-- Window: Oscilloscope -->
+<div class="win" id="win-scope" style="width:280px;" data-color="0.9,0.15,0.5">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">SIGNAL / OSC</span>
+  </div>
+  <div class="win-body">
+    <canvas class="scope" id="osc-canvas" width="248" height="60"></canvas>
+    <div class="divider"></div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>FREQ</span><span id="freq-val">440 Hz</span>
+    </div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>AMP</span><span id="amp-val">0.82</span>
+    </div>
+  </div>
+</div>
+
+<!-- Window: Terminal -->
+<div class="win" id="win-term" style="width:300px;" data-color="0.1,0.8,0.2">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">TERMINAL</span>
+  </div>
+  <div class="win-body">
+    <div class="terminal-body" id="term-out"></div>
+  </div>
+</div>
+
+<!-- Window: Activity Feed -->
+<div class="win" id="win-feed" style="width:260px;" data-color="0.95,0.5,0.1">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">ACTIVITY</span>
+  </div>
+  <div class="win-body" id="feed-body" style="max-height:160px;overflow-y:auto;"></div>
+</div>
+
+<!-- Window: Metrics -->
+<div class="win" id="win-metrics" style="width:230px;" data-color="0.8,0.9,0.1">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">METRICS</span>
+  </div>
+  <div class="win-body">
+    <div class="stat-row">
+      <div>
+        <div class="stat-val" style="color:#ffe040">99.8%</div>
+        <div class="stat-label">Uptime</div>
+      </div>
+      <div style="text-align:right">
+        <div class="stat-val" style="color:#40ffcc">1.2ms</div>
+        <div class="stat-label">Latency</div>
+      </div>
+    </div>
+    <div class="mini-chart" id="lat-bars"></div>
+    <div class="divider"></div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>PACKETS/s</span><span id="pkt-val">18,432</span>
+    </div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span>ERRORS</span><span id="err-val">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- Window: Line Chart -->
+<div class="win" id="win-linechart" style="width:300px;" data-color="0.05,0.6,0.8">
+  <div class="titlebar">
+    <div class="tb-dots">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+    </div>
+    <span class="tb-title">THROUGHPUT</span>
+  </div>
+  <div class="win-body">
+    <canvas id="line-canvas" width="268" height="80" style="width:100%;height:80px;display:block;border-radius:4px;"></canvas>
+    <div class="divider"></div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span><span class="color-pill" style="background:#00e5ff"></span>TX</span>
+      <span id="tx-val">—</span>
+    </div>
+    <div class="stat-row" style="font-size:10px;color:var(--text-dim)">
+      <span><span class="color-pill" style="background:#ff6ec7"></span>RX</span>
+      <span id="rx-val">—</span>
+    </div>
+  </div>
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>

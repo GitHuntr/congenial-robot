@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+{% block title %}System Overview{% endblock %}
+{% block header_title %}Firewall Operations Center{% endblock %}
+
+{% block content %}
+<section class="hero-strip">
+    <div class="hero-strip-title">Defense Posture</div>
+    <div class="hero-strip-metrics">
+        <div class="hero-chip">Rules: <strong id="heroRules">{{ stats.total_rules }}</strong></div>
+        <div class="hero-chip hero-chip--danger">Blocked: <strong id="heroBlocks">{{ stats.active_blocks }}</strong></div>
+        <div class="hero-chip hero-chip--good">Logs: <strong id="heroLogs">{{ stats.log_count }}</strong></div>
+    </div>
+</section>
+
+<main class="rt-grid rt-grid--three">
+    <aside class="rt-card rt-card--stat rt-card--stat-info">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Active Policies</div>
+                <div class="rt-sub">Firewall rules currently enforced</div>
+            </div>
+            <span class="rt-chip rt-chip--info">RULES</span>
+        </div>
+        <div class="rt-number rt-number--muted" id="dashTotalRules">{{ stats.total_rules }}</div>
+    </aside>
+
+    <aside class="rt-card rt-card--stat rt-card--stat-danger">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Blocked Attempts</div>
+                <div class="rt-sub">Denied traffic events</div>
+            </div>
+            <span class="rt-chip rt-chip--danger">BLOCK</span>
+        </div>
+        <div class="rt-number rt-number--danger" id="dashActiveBlocks">{{ stats.active_blocks }}</div>
+    </aside>
+
+    <aside class="rt-card rt-card--stat rt-card--stat-good">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Security Logs</div>
+                <div class="rt-sub">Recorded firewall actions</div>
+            </div>
+            <span class="rt-chip">LOGS</span>
+        </div>
+        <div class="rt-number rt-number--good" id="dashLogCount">{{ stats.log_count }}</div>
+    </aside>
+
+    <aside class="rt-card rt-card--actions">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Quick Actions</div>
+                <div class="rt-sub">Diagnostic and maintenance controls</div>
+            </div>
+        </div>
+        <div class="rt-controls rt-controls--stack">
+            <button class="rt-btn rt-btn--primary" onclick="testConnection()">
+                <i class="fa-solid fa-heart-pulse"></i> Run Health Check
+            </button>
+            <button class="rt-btn" onclick="exportRules()">
+                <i class="fa-solid fa-download"></i> Export Rules
+            </button>
+            <a class="rt-btn" href="/inspection">
+                <i class="fa-solid fa-network-wired"></i> Open Packet Inspection
+            </a>
+            <button class="rt-btn rt-btn--danger" onclick="clearLogs()">
+                <i class="fa-solid fa-trash"></i> Purge Logs
+            </button>
+        </div>
+    </aside>
+
+    <aside class="rt-card rt-card--feed rt-card--events rt-span-2">
+        <div class="rt-card-head">
+            <div>
+                <div class="rt-title">Recent Security Events</div>
+                <div class="rt-sub">Live stream of rule activity and traffic outcomes</div>
+            </div>
+        </div>
+        <div class="rt-feed rt-feed--fixed" id="recentLogs">
+            <p class="rt-empty">Fetching logs...</p>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    async function testConnection() {
+        try {
+            const response = await fetch('/api/health');
+            const data = await response.json();
+            if (data.status === 'healthy') showAlert('CCAF services are healthy (v' + data.version + ')', 'success');
+            else showAlert('Engine health check reported an issue.', 'error');
+        } catch (e) {
+            showAlert('Health check failed. Verify backend connectivity.', 'error');
+        }
+    }
+
+    async function exportRules() {
+        window.location.href = '/api/export';
+    }
+
+    async function clearLogs() {
+        if (confirm('Are you sure you want to permanently purge all firewall logs?')) {
+            const res = await fetch('/api/logs/clear', { method: 'POST' });
+            if (res.ok) {
+                showAlert('Security logs purged successfully.', 'success');
+                loadLogs();
+            }
+        }
+    }
+
+    async function loadLogs() {
+        const res = await fetch('/api/logs');
+        const logs = await res.json();
+        const container = document.getElementById('recentLogs');
+        container.innerHTML = '';
+
+        if (logs.length === 0) {
+            container.innerHTML = '<p class="rt-empty">No recent firewall logs found.</p>';
+            return;
+        }
+
+        logs.forEach(log => {
+            const badgeClass = log.action === 'BLOCKED' ? 'bad' : 'good';
+            const div = document.createElement('div');
+            div.className = 'rt-item rt-item--entry';
+            div.innerHTML = `
+                <div class="rt-item-top">
+                    <div class="rt-item-title">${log.target}</div>
+                    <span class="rt-badge ${badgeClass}">${log.action}</span>
+                </div>
+                <div class="rt-item-bottom">
+                    <div class="rt-item-meta">${log.timestamp} • ${log.type}</div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    setInterval(() => {
+        loadLogs();
+        fetch('/api/stats').then(r => r.json()).then(data => {
+            document.getElementById('dashTotalRules').textContent = data.total_rules;
+            document.getElementById('dashActiveBlocks').textContent = data.active_blocks;
+            document.getElementById('dashLogCount').textContent = data.log_count;
+            document.getElementById('heroRules').textContent = data.total_rules;
+            document.getElementById('heroBlocks').textContent = data.active_blocks;
+            document.getElementById('heroLogs').textContent = data.log_count;
+        });
+    }, 10000);
+
+    loadLogs();
+</script>
+{% endblock %}
